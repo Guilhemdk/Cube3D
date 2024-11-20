@@ -102,7 +102,7 @@ void	locate_spawn(t_map *map)
 	{
 		if (is_spawn(map->file_map, i) == 0)
 		{
-			printf(">%c<\n", map->file_map[i - map->width]);
+			printf(">%d<\n", map->width);
 			return ;
 		}
 		if (map->file_map[i] == '\n')

@@ -35,7 +35,6 @@ char	*path_elem(t_map *map)
 		map->i++;
 	}
 	elem[size] = '\0';
-	printf("PATH ELEM: %s\n", elem);
 	return (elem);
 }
 
@@ -120,7 +119,7 @@ int	size_map(t_map *map, int i)
 	map->height = 0;
 	while (map->file[i] != '\0')
 	{
-		size = 1;
+		size = 0;
 		while (map->file[i] != '\n' && map->file[i] != '\0')
 		{
 			size++;
@@ -149,14 +148,14 @@ void	add_in_file(t_map *map, int j)
 			i++;
 			j++;
 		}
-		while (i % map->width != 0 || i < map->width)
+		while ((i % map->width != 0 || i < map->width) && map->file[j] != '\0')
 		{
-			map->file_map[i] = ' ';
+			map->file_map[i] = '-';
 			i++;
 		}
 		if (map->file[j] != '\0')
 		{
-			map->file_map[i] = '\n';
+			map->file_map[--i] = '\n';
 			i++;
 			j++;
 		}
@@ -169,17 +168,18 @@ int	create_file(t_map *map)
 	int		i;
 
 	i = 1;
-	if (map->i - i >= 0)
+	if (map->i - i >= 0 && map->file[map->i - i] == ' ')
 	{
 		while (map->i - i >= 0 && map->file[map->i - i] == ' ')
 			i++;
 	}
 	else
 		i = 0;
-	map->file_map = malloc(sizeof(char) * (size_map(map, i) + 1));
+	map->file_map = malloc(sizeof(char) * (size_map(map, map->i - i) + 1));
 	if (!map->file_map)
 		return (1);
-	add_in_file(map, i);
+	add_in_file(map, map->i - i);
+	printf("map>\n%s\n<", map->file_map);
 	return (0);
 }
 
@@ -195,11 +195,11 @@ int	ft_search_elem(t_map *map)
 		if (map->file[map->i] == '1')
 		{
 			i = map->i;
-			if (char_map(map) != 0 || create_file(map) != 0)
+			if (char_map(map) != 0 )
 				return (1);
 			map->i = i;
-			printf("ici\n");
-			create_file(map);
+			if (create_file(map) != 0)
+				return (1);
 			return(check_border(map));
 		}
 		else if (id_texture(map) == -1)
