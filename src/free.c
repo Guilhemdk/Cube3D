@@ -17,23 +17,15 @@ void	free_map(t_map *map)
 	if (map->file_map)
 		free(map->file_map);
 	if (map->file_SO)
-	{
-		printf("PATH SO: %s\n", map->file_SO);
 		free(map->file_SO);
-	}
 	if (map->file_NO)
-	{
-		printf("PATH NO: %s\n", map->file_NO);
 		free(map->file_NO);
-	}
 	if (map->file_WE)
-	{
-		printf("PATH WE: %s\n", map->file_WE);
 		free(map->file_WE);
-	}
 	if (map->file_EA)
-	{
-		printf("PATH EA: %s\n", map->file_EA);
 		free(map->file_EA);
-	}
+	if (map->color_c)
+		free(map->color_c);
+	if (map->color_f)
+		free(map->color_f);
 }

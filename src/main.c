@@ -15,6 +15,11 @@
 void	init_struct(t_map *map)
 {
 	map->file_SO = NULL;
+	map->file_NO = NULL;
+	map->file_WE = NULL;
+	map->file_EA = NULL;
+	map->color_c = NULL;
+	map->color_f = NULL;
 }
 
 int	main(int ac, char **av)
@@ -25,11 +30,12 @@ int	main(int ac, char **av)
 		return (printf("ERROR\n"));
 	init_struct(&map);
 	if (init_map(&map, av[1]) > 0)
-		return (printf("Error\n"));
+		printf("Error\n");
+	else
+		printf("\nHELLO WORLD\n");
 	// init_window minilibx
 	// exec_game()
 	// exit propre
-	printf("\nHELLO WORLD\n");
 	free_map(&map);
 	return (0);
 }

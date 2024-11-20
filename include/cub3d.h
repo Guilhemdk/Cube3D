@@ -24,14 +24,17 @@ typedef struct s_map
 	char	*file_SO;
 	char	*file_WE;
 	char	*file_EA;
-	int		color_f;
-	int		color_c;
+	char	*color_f;
+	char	*color_c;
+	char	pos_start;
+	int		i;
 }	t_map;
 
 
 //init map
 int		init_map(t_map *map, char *file);
 int		init_info_map(t_map *map);
+int		check_border(t_map *map);
 
 //utils
 int		ft_strcmp(const char *s1, const char *s2);
