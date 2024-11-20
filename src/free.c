@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:00:40 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/18 22:12:24 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/20 12:41:07 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_map(t_map *map)
 {
-	if (map->file_map)
-		free(map->file_map);
+	if (map->file)
+		free(map->file);
 	if (map->file_SO)
 		free(map->file_SO);
 	if (map->file_NO)
@@ -28,4 +28,6 @@ void	free_map(t_map *map)
 		free(map->color_c);
 	if (map->color_f)
 		free(map->color_f);
+	if (map->file_map)
+		free(map->file_map);
 }

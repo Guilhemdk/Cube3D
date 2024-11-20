@@ -1,0 +1,3 @@
+recreer un char * avec les meme size de ligne donc malloc (size-max-ligne * nb ligne)
+se positionner sur les spawn
+trouver un mur et essayer de faire un tour => pqs lq meilleur sol ..
