@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/20 12:45:44 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:12:23 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	size_map(t_map *map, int i)
 			i++;
 		}
 		if (size > map->width)
-			map->width = size;
+			map->width = size + 1;
 		if (map->file[i] != '\0')
 			i++;
 		map->height++;
@@ -148,7 +148,7 @@ void	add_in_file(t_map *map, int j)
 			i++;
 			j++;
 		}
-		while ((i % map->width != 0 || i < map->width) && map->file[j] != '\0')
+		while ((i % map->width != 0 || i < map->width))
 		{
 			map->file_map[i] = '-';
 			i++;
@@ -160,7 +160,7 @@ void	add_in_file(t_map *map, int j)
 			j++;
 		}
 	}
-	map->file_map[i] = '\0';
+	map->file_map[--i] = '\0';
 }
 
 int	create_file(t_map *map)
@@ -172,6 +172,7 @@ int	create_file(t_map *map)
 	{
 		while (map->i - i >= 0 && map->file[map->i - i] == ' ')
 			i++;
+		i--;
 	}
 	else
 		i = 0;
@@ -179,7 +180,7 @@ int	create_file(t_map *map)
 	if (!map->file_map)
 		return (1);
 	add_in_file(map, map->i - i);
-	printf("map>\n%s\n<", map->file_map);
+	printf("file_map>\n%s\n<", map->file_map);
 	return (0);
 }
 
@@ -215,8 +216,6 @@ int	ft_search_elem(t_map *map)
 int	init_info_map(t_map *map)
 {
 	map->i = -1;
-	// while (map->file[++map->i])
-	// 	write(1, &map->file[map->i], 1);
 	if (ft_search_elem(map) != 0)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/18 21:50:18 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:13:39 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int ac, char **av)
 		return (printf("ERROR\n"));
 	init_struct(&map);
 	if (init_map(&map, av[1]) > 0)
-		printf("Error\n");
+		return(free_map(&map), 1);
 	else
-		printf("\nHELLO WORLD\n");
+		printf("\nGG !\n");
 	// init_window minilibx
 	// exec_game()
 	// exit propre
