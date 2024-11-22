@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:22 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/20 12:46:23 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/22 14:00:08 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
+
+# define PATH_N	"../textures/N.xpm"
+# define PATH_S	"../textures/S.xpm"
+# define PATH_E	"../textures/E.xpm"
+# define PATH_W	"../textures/W.xpm"
 
 typedef struct s_border
 {
@@ -52,6 +57,7 @@ int		init_map(t_map *map, char *file);
 int		init_info_map(t_map *map);
 int		check_next_line(t_map *map, t_border *bord);
 int		check_border(t_map *map);
+int		check_path(t_map *map);
 
 //utils_map
 int		is_spawn(char *str, int i);

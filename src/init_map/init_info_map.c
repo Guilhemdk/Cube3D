@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/22 13:12:23 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:52:42 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,8 @@ int	init_info_map(t_map *map)
 {
 	map->i = -1;
 	if (ft_search_elem(map) != 0)
+		return (1);
+	if (check_path(map) != 0)
 		return (1);
 	return (0);
 }
