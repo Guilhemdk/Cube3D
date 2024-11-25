@@ -6,7 +6,7 @@
 #    By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:47:34 by pitroin           #+#    #+#              #
-#    Updated: 2024/11/25 13:10:48 by pitroin          ###   ########.fr        #
+#    Updated: 2024/11/25 13:41:30 by pitroin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ OBJS = ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME) $(MLX_FLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

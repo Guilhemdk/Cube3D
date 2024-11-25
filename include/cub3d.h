@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:22 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/25 13:21:06 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:38:55 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
 
 # define PATH_N	"../textures/N.xpm"
 # define PATH_S	"../textures/S.xpm"
 # define PATH_E	"../textures/E.xpm"
 # define PATH_W	"../textures/W.xpm"
+
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 
 typedef struct s_border
 {
@@ -93,7 +97,7 @@ int		is_spawn(char *str, int i);
 int		not_wall(t_map *map, t_border *bord, int f);
 
 //init window
-
+int	init_window(t_data *d);
 
 //utils
 int		ft_strcmp(const char *s1, const char *s2);
