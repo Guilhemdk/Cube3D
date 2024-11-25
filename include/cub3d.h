@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:22 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/22 14:00:08 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:21:06 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,35 @@ typedef struct s_map
 	int		width;
 }	t_map;
 
+typedef struct s_image
+{
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
+	char	*buffer;
+	void	*image;
+}	t_image;
+
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+	t_image	img;
+	double	zoom;
+	double	horizontal;
+	double	vertical;
+	double	rotation_angle_x;
+	double	rotation_angle_y;
+	double	rotation_angle_z;
+	int		perspective;
+}	t_win;
+
+typedef struct s_data
+{
+	t_win	w;
+	t_map	m;
+}	t_data;
+
 
 //init map
 int		init_map(t_map *map, char *file);
@@ -62,6 +91,9 @@ int		check_path(t_map *map);
 //utils_map
 int		is_spawn(char *str, int i);
 int		not_wall(t_map *map, t_border *bord, int f);
+
+//init window
+
 
 //utils
 int		ft_strcmp(const char *s1, const char *s2);

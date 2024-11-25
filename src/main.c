@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/22 13:13:39 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:21:34 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ void	init_struct(t_map *map)
 
 int	main(int ac, char **av)
 {
-	t_map	map;
+	t_data	data;
 
 	if (ac != 2)
 		return (printf("ERROR\n"));
-	init_struct(&map);
-	if (init_map(&map, av[1]) > 0)
-		return(free_map(&map), 1);
+	init_struct(&data.m);
+	if (init_map(&data.m, av[1]) > 0)
+		return(free_map(&data.m), 1);
 	else
 		printf("\nGG !\n");
 	// init_window minilibx
 	// exec_game()
 	// exit propre
-	free_map(&map);
+	free_map(&data.m);
 	return (0);
 }
