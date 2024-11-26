@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/25 13:37:04 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:10:54 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 		return (printf("ERROR\n"));
 	init_struct(&data.m);
 	if (init_map(&data.m, av[1]) > 0)
-		return(free_map(&data.m), 1);
+		return (free_map(&data.m), 1);
 	else
 		printf("\nGG !\n");
 	init_window(&data);
