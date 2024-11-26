@@ -6,7 +6,7 @@
 #    By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:47:34 by pitroin           #+#    #+#              #
-#    Updated: 2024/11/25 13:41:30 by pitroin          ###   ########.fr        #
+#    Updated: 2024/11/26 17:20:37 by pitroin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,8 @@ SRCS = gnl/get_next_line.c gnl/get_next_line_utils.c \
 		src/main.c \
 		src/init_map/check_map.c \
 		src/init_map/check_border.c \
-		src/init_map/check_path.c \
 		src/init_map/init_info_map.c \
-		src/init_map/utils_map.c \
+		src/init_map/textures_map.c \
 		src/init_window/init_window.c \
 		src/utils.c \
 		src/free.c

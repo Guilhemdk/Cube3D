@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:22 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/25 13:38:55 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:19:26 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,8 @@ typedef struct s_win
 	void	*mlx;
 	void	*win;
 	t_image	img;
-	double	zoom;
 	double	horizontal;
 	double	vertical;
-	double	rotation_angle_x;
-	double	rotation_angle_y;
-	double	rotation_angle_z;
-	int		perspective;
 }	t_win;
 
 typedef struct s_data
@@ -88,13 +83,14 @@ typedef struct s_data
 //init map
 int		init_map(t_map *map, char *file);
 int		init_info_map(t_map *map);
-int		check_next_line(t_map *map, t_border *bord);
 int		check_border(t_map *map);
 int		check_path(t_map *map);
+int		ft_search_elem(t_map *map);
+int		id_color(t_map *map);
+int		id_texture(t_map *map);
 
 //utils_map
 int		is_spawn(char *str, int i);
-int		not_wall(t_map *map, t_border *bord, int f);
 
 //init window
 int	init_window(t_data *d);
