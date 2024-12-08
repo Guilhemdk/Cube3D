@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 int	is_spawn(char *str, int i)
 {

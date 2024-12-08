@@ -13,6 +13,7 @@
 		"vector": "c",
 		"__locale": "c",
 		"locale": "c",
-		"ios": "c"
+		"ios": "c",
+		"cube3d.h": "c"
 	}
 }

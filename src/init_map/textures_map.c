@@ -10,7 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
+
+void load_map(t_map *map, const char *filename)
+{
+    int     fd;
+    char    *line;
+    int     i;
+
+    // Allouer de la mémoire pour le tableau des lignes
+    map->map = malloc(sizeof(char *) * (map->height + 1)); // +1 pour NULL à la fin
+    if (!map->map)
+        return; // Gestion d'erreur d'allocation mémoire
+
+    fd = open(filename, O_RDONLY);
+    if (fd < 0)
+    {
+        free(map->map);
+        map->map = NULL; // Protection en cas d'échec
+        return; // Gestion d'erreur d'ouverture de fichier
+    }
+
+    i = 0;
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        map->map[i] = line; // Chaque ligne est stockée dans le tableau
+        i++;
+    }
+    map->map[i] = NULL; // Marquer la fin du tableau
+    close(fd);
+}
+
 
 char	*path_elem(t_map *map)
 {

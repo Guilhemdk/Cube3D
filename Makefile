@@ -14,22 +14,24 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -ggdb3
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lpthread -lXrandr -lXrender -ldl
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lpthread -ldl
 LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
-GNL_DIR = gnl
+GNL_DIR = get_next_line
 INCLUDES = -I $(LIBFT_DIR) -I $(GNL_DIR) -I $(PRINTF_DIR) -I src
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX = $(MLX_DIR)/libmlx.a
 
 # Fichiers source et objets
-SRCS = gnl/get_next_line.c gnl/get_next_line_utils.c \
+SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
 		src/main.c \
 		src/init_map/check_map.c \
 		src/init_map/check_border.c \
 		src/init_map/init_info_map.c \
 		src/init_map/textures_map.c \
 		src/init_window/init_window.c \
+		src/exec/DDA.c \
+		src/exec/raycast.c \
 		src/utils.c \
 		src/free.c
 

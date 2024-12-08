@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/Cube3D.h"
 
 void	free_map(t_map *map)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 int	check_path(t_map *map)
 {
@@ -87,5 +87,6 @@ int	init_map(t_map *map, char *file)
 	printf("%s\n", map->file);
 	if (init_info_map(map) != 0)
 		return (1);
+	load_map(map, file);
 	return (0);
 }

@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
 	char	*pixel;
 
-	if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
+	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
 	{
 		pixel = img->buffer + (y * img->line_bytes + x * (img->pixel_bits / 8));
 		*(int *)pixel = color;
@@ -43,7 +43,7 @@ int	key_event(int keycode, t_data *d)
 int	init_window(t_data *d)
 {
 	d->w.mlx = mlx_init();
-	d->w.win = mlx_new_window(d->w.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D");
+	d->w.win = mlx_new_window(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
 	mlx_key_hook(d->w.win, &key_event, &d->w);
 	mlx_hook(d->w.win, 17, 0, &escape_event, &d->w);
 	mlx_loop(d->w.mlx);

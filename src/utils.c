@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/Cube3D.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
