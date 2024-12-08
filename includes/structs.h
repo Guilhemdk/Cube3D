@@ -1,18 +1,63 @@
-
-typedef struct s_raycasting
+//structs Pierre
+typedef struct s_border
 {
-	double deltadistX; // distance the ray must travel to move from one side of a map square the the next X or Y direction
-	double deltadistY;
-	double sidedistX;
-	double sidedistY;
-	int stepX;
-	int stepY;
-	double cameraX; // represents X coordinate in camera space (-1 (left side) -> 1 (right side))
-	double raydirX; // represents the direction of the current ray
-	double raydirY;
-	int mapX; // represents the current square in the map grid the ray is in
-	int mapY;
-}			t_raycasting;
+	int	i;
+	int	j;
+	int	size;
+	int	space;
+	int	spawn;
+	int	height;
+	int	width;
+}	t_border;
+
+typedef struct s_map
+{
+	char	*file_map;
+	char	*file;
+	char	*file_NO;
+	char	*file_SO;
+	char	*file_WE;
+	char	*file_EA;
+	char	*color_f;
+	char	*color_c;
+	char	dir_spawn;
+	int		x_spawn;
+	int		y_spawn;
+	int		i;
+	int		height;
+	int		width;
+}	t_map;
+
+typedef struct s_image
+{
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
+	char	*buffer;
+	void	*image;
+}	t_image;
+
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+	t_image	img;
+	double	zoom;
+	double	horizontal;
+	double	vertical;
+	double	rotation_angle_x;
+	double	rotation_angle_y;
+	double	rotation_angle_z;
+	int		perspective;
+}	t_win;
+
+//Structs Guilhem
+typedef struct s_ray
+{
+	double angle;
+	double distance;
+	double wall_flag;
+}	t_ray;
 
 typedef struct s_wall
 {
@@ -20,15 +65,21 @@ typedef struct s_wall
 	int height;
 	int start;
 	int end;
-}				t_wall;
+}	t_wall;
 
 typedef struct s_player
 {
-	double posX; //player pos Y on map
-	double posY; //player pos X on map
-	char start_player_dir;
-	double dirX; // direction vector X the player is facing
-	double dirY; // direction vector Y the player is facing
-	double planeX; // Represents the 2D camera plane (perpendicular to dir X)
-	double planeY; // Adjusts the FOV (field of view) (commonly set on 0.66/66°)
-}			t_player;
+	int posX;
+	int posY;
+	float fov;
+	double angle;
+}	t_player;
+
+typedef struct s_data
+{
+	t_win	w;
+	t_map	m;
+	t_ray rc;
+	t_player player;
+	t_wall wall;
+}	t_data;
