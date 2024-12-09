@@ -39,6 +39,7 @@ int		is_spawn(char *str, int i);
 
 //init window
 int	init_window(t_data *d);
+int	init_texture(t_data *d);
 
 //utils
 int		ft_strcmp(const char *s1, const char *s2);

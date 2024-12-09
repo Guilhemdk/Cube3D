@@ -19,7 +19,8 @@ void load_map(t_map *map, const char *filename)
     int     i;
 
     // Allouer de la mémoire pour le tableau des lignes
-    map->map = malloc(sizeof(char *) * (map->height + 1)); // +1 pour NULL à la fin
+	printf("%d\n", map->nb_line);
+    map->map = malloc(sizeof(char *) * (map->nb_line + 1)); // +1 pour NULL à la fin
     if (!map->map)
         return; // Gestion d'erreur d'allocation mémoire
 
@@ -34,7 +35,9 @@ void load_map(t_map *map, const char *filename)
     i = 0;
     while ((line = get_next_line(fd)) != NULL)
     {
-        map->map[i] = line; // Chaque ligne est stockée dans le tableau
+		printf("%s", line);
+        map->map[i] = ft_strdup(line); // Chaque ligne est stockée dans le tableau
+		free(line);
         i++;
     }
     map->map[i] = NULL; // Marquer la fin du tableau

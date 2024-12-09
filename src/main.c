@@ -14,6 +14,7 @@
 
 void	init_struct(t_map *map)
 {
+	map->nb_line = 0;
 	map->file_SO = NULL;
 	map->file_NO = NULL;
 	map->file_WE = NULL;
@@ -39,6 +40,13 @@ void	init_player(t_data *data)
 
 }
 
+void	init(t_data *d)
+{
+	d->w.img.pixel_bits = 0;
+	d->w.img.line_bytes = 0;
+	d->w.img.endian = 0;
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -50,6 +58,7 @@ int	main(int ac, char **av)
 		return(free_map(&data.m), 1);
 	else
 		printf("\nGG !\n");
+	init(&data);
 	init_window(&data);
 	exec_game(&data);
 	// exit propre

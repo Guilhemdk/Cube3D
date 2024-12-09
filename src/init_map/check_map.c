@@ -82,6 +82,7 @@ int	init_map(t_map *map, char *file)
 		map->file = gnl;
 		free(line);
 		line = get_next_line(fd);
+		map->nb_line++;
 	}
 	close(fd);
 	printf("%s\n", map->file);

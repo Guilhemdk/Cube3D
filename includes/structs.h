@@ -21,6 +21,7 @@ typedef struct s_map
 	char	*color_f;
 	char	*color_c;
 	char	dir_spawn;
+	int		nb_line;
 	int		x_spawn;
 	int		y_spawn;
 	int		i;
@@ -31,11 +32,18 @@ typedef struct s_map
 
 typedef struct s_image
 {
+	void	*wallN;
+	void	*wallS;
+	void	*wallW;
+	void	*wallE;
+	void	*image;
 	int		pixel_bits;
 	int		line_bytes;
 	int		endian;
+	int		*addr;
 	char	*buffer;
-	void	*image;
+	int		height;
+	int		width;
 }	t_image;
 
 typedef struct s_win

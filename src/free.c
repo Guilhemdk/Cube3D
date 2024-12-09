@@ -30,4 +30,13 @@ void	free_map(t_map *map)
 		free(map->color_f);
 	if (map->file_map)
 		free(map->file_map);
+	if (map->map)
+	{
+		while (*map->map)
+		{
+			free(*(map->map));
+			(map->map)++;
+		}
+		free(map->map);
+	}
 }

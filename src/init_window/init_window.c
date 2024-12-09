@@ -39,11 +39,24 @@ int	key_event(int keycode, t_data *d)
 	return (1);
 }
 
+int	luncher(t_data * d)
+{
+	init_texture(d);
+	// d->w.img.image = mlx_new_image(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	// d->w.img.addr = (int *)mlx_get_data_addr(d->w.img.wallN, &d->w.img.pixel_bits,
+	// 	&d->w.img.line_bytes, &d->w.img.endian);
+	mlx_put_image_to_window(d->w.mlx, d->w.win, d->w.img.wallN, 0, 0);
+	mlx_put_image_to_window(d->w.mlx, d->w.win, d->w.img.wallE, 0, 100);
+	mlx_put_image_to_window(d->w.mlx, d->w.win, d->w.img.wallS, 0, 200);
+	mlx_put_image_to_window(d->w.mlx, d->w.win, d->w.img.wallW, 0, 300);
+	return (0);
+}
 
 int	init_window(t_data *d)
 {
 	d->w.mlx = mlx_init();
 	d->w.win = mlx_new_window(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
+	luncher(d);
 	mlx_key_hook(d->w.win, &key_event, &d->w);
 	mlx_hook(d->w.win, 17, 0, &escape_event, &d->w);
 	mlx_loop(d->w.mlx);
