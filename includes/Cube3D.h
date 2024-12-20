@@ -16,11 +16,13 @@ void init_player(t_data *data);
 void init_data(t_player *player, t_ray *raycast, t_data *data);
 
 //raycasting
+void calc_rays(t_data *data);
 void exec_game(t_data *data);
 float norm_angle(float angle);
-void DDA(t_data *data, int ray);
+void DDa(t_data *data, int ray);
 void putPixelToBuffer(int x, int y, int color);
 int getWallColor();
+void put_pixel(t_image *img, int x, int y, int color);
 
 
 //init map
@@ -38,8 +40,10 @@ int		not_wall(t_map *map, t_border *bord, int f);
 int	init_window(t_data *d);
 
 //utils
+void	*safe_malloc(size_t bytes, t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 
 //free
+void	error(t_data *data, char *msg);
 void	free_map(t_map *map);
 #endif

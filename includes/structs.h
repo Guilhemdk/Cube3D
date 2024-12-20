@@ -1,4 +1,5 @@
 //structs Pierre
+
 typedef struct s_border
 {
 	int	i;
@@ -12,6 +13,7 @@ typedef struct s_border
 
 typedef struct s_map
 {
+	char	**map;
 	char	*file_map;
 	char	*file;
 	char	*file_NO;

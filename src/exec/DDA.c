@@ -1,34 +1,34 @@
 #include "../../includes/Cube3D.h"
 
-static char get_color(t_data *data, int wall_flag)
+static int get_color(t_data *data, int wall_flag)
 {
 	data->rc.angle = norm_angle(data->rc.angle);
 	if (wall_flag == 0)
 	{
 		if (data->rc.angle > PI / 2 && data->rc.angle < 3 * PI / 2)
-			return ('W'); //TODO
+			return (0x00FF00FF); //W
 		else
-			return ('E'); //TODO
+			return (0xFFFF00FF); //E
 	}
 	else
 	{
 		if (data->rc.angle > 0 && data->rc.angle < PI)
-			return ('S'); //TODO
+			return (0xFF0000FF); //S
 		else
-			return ('N'); //TODO
+			return (0x0000FFFF); //N
 	}
 	return ('I');
 }
 
-static void draw_wall(t_data *data, int ray, double top_pix, double bot_pix)
+static void draw_wall(t_data *data, int ray, int top_pix, double bot_pix)
 {
-	char orientation;
+	int color;
 
-	orientation = get_color(data, data->rc.wall_flag); //TODO
+	color = get_color(data, data->rc.wall_flag); //TODO
 	//if (orientation == 'I')
 		//error(data);
 	while(top_pix < bot_pix)
-		gen_wall(orientation) //TODO
+		put_pixel(&data->w.img, ray, top_pix++, color);
 }
 
 static void draw_floor_ceiling(t_data *data, int ray, int top_pix, int bot_pix)
@@ -37,13 +37,13 @@ static void draw_floor_ceiling(t_data *data, int ray, int top_pix, int bot_pix)
 
 	i = bot_pix;
 	while(i < SCREEN_HEIGHT)
-		gen_floor() //TODO
+		put_pixel(&data->w.img, ray, i++, 0x000000FF);
 	i = 0;
 	while(i < top_pix)
-		gen_ceiling() //TODO
+		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF);
 }
 
-void DDA(t_data *data, int ray)
+void DDa(t_data *data, int ray)
 {
 	double wall_height;
 	double bot_pix;

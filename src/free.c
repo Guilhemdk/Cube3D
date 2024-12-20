@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/Cube3D.h"
+
 
 void	free_map(t_map *map)
 {
+	int i;
 	if (map->file)
 		free(map->file);
 	if (map->file_SO)
@@ -30,4 +32,16 @@ void	free_map(t_map *map)
 		free(map->color_f);
 	if (map->file_map)
 		free(map->file_map);
+	i = -1;
+	if (map->map)
+	{
+		while (map->map[++i])
+			free(map[i]);
+	}
+}
+
+void	error(t_data *data, char *msg)
+{
+	write(1, &msg, ft_strlen(msg));
+	free_map(data->m);
 }

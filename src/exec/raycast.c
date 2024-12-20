@@ -108,11 +108,26 @@ static float get_next_v_wall(t_data *data, float angle)
 	return (sqrt(pow(xray_intersection - data->player.posX, 2) + pow(yray_intersection - data->player.posY, 2)));
 }
 
-static void calc_rays(t_data *data)
+void image_to_window(t_win *mlx, t_data *data)
+{
+	if (mlx->img.image)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.image, 0, 0);
+		mlx_destroy_image(mlx->mlx, mlx->img.image);
+	}
+	mlx->img.image = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!mlx->img.image)
+		error(data, MLX_ERR);
+	mlx->img.buffer = mlx_get_data_addr(mlx->img.image, \
+			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
+}
+
+void calc_rays(t_data *data)
 {
 	double closest_h_wall;
 	double closest_v_wall;
 	int ray;
+
 
 	ray = 0;
 	data->rc.angle = data->player.angle - (data->player.fov / 2);
@@ -128,13 +143,22 @@ static void calc_rays(t_data *data)
 			data->rc.distance = closest_h_wall;
 			data->rc.wall_flag = 1;
 		}
-		DDA(data, ray);
+		DDa(data, ray);
 		ray++;
 		data->rc.angle += (data->player.fov / SCREEN_WIDTH);
 	}
+	image_to_window(data->w.mlx, data);
 }
 
 void exec_game(t_data *data)
 {
+	t_win *mlx;
+
+	mlx = &data->w;
+	mlx->img.image = mlx_new_image(data->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx->img.buffer = mlx_get_data_addr(mlx->img.image, \
+			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
 	calc_rays(data);
+	mlx_hook(data->win, 2, 1L << 0, generate_event, data);
+	mlx_loop(mlx->mlx);
 }

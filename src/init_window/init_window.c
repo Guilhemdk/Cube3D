@@ -6,17 +6,17 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:11:56 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/25 13:38:17 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/12/16 13:10:22 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
 	char	*pixel;
 
-	if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
+	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
 	{
 		pixel = img->buffer + (y * img->line_bytes + x * (img->pixel_bits / 8));
 		*(int *)pixel = color;
