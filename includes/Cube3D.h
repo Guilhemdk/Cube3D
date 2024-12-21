@@ -28,10 +28,14 @@ int generate_event(int key, t_data *data);
 //init map
 int		init_map(t_map *map, char *file);
 int		init_info_map(t_map *map);
-int		check_next_line(t_map *map, t_border *bord);
 int		check_border(t_map *map);
 int		check_path(t_map *map);
-int		not_wall(t_map *map, t_border *bord, int f);
+void	load_map(t_map *map, const char *filename);
+int		ft_search_elem(t_map *map);
+int		id_color(t_map *map);
+int		id_texture(t_map *map);
+char	*path_elem(t_map *map);
+
 int		is_spawn(char *str, int i);
 
 

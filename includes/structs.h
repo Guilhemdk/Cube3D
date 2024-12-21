@@ -23,6 +23,7 @@ typedef struct s_map
 	char	*color_f;
 	char	*color_c;
 	char	dir_spawn;
+	int		nb_line;
 	int		x_spawn;
 	int		y_spawn;
 	int		i;
