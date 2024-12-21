@@ -152,15 +152,3 @@ void calc_rays(t_data *data)
 	// image_to_window(data->w.mlx, data);
 }
 
-// void exec_game(t_data *data)
-// {
-// 	t_win *mlx;
-
-// 	mlx = &data->w;
-// 	mlx->img.image = mlx_new_image(data->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-// 	mlx->img.buffer = mlx_get_data_addr(mlx->img.image,
-// 			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
-// 	calc_rays(data);
-// 	mlx_loop(mlx->mlx);
-// //	mlx_hook(data->w, 2, 1L << 0, generate_event, data);
-// }
