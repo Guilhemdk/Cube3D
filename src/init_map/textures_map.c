@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 18:50:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 21:17:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void load_map(t_map *map, const char *filename)
     int     i;
 
     // Allouer de la mémoire pour le tableau des lignes
-	printf("%d\n", map->nb_line);
     map->map = malloc(sizeof(char *) * (map->nb_line + 1)); // +1 pour NULL à la fin
     if (!map->map)
         return; // Gestion d'erreur d'allocation mémoire
@@ -35,7 +34,6 @@ void load_map(t_map *map, const char *filename)
     i = 0;
     while ((line = get_next_line(fd)) != NULL)
     {
-		printf("%s", line);
         map->map[i] = ft_strdup(line); // Chaque ligne est stockée dans le tableau
 		free(line);
         i++;

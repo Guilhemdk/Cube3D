@@ -133,11 +133,9 @@ void calc_rays(t_data *data)
 	data->rc.angle = data->player.angle - (data->player.fov / 2);
 	while(ray < SCREEN_WIDTH)
 	{
-		printf("a\n");
 		data->rc.wall_flag = 0;
 		closest_h_wall = get_next_h_wall(data, norm_angle(data->rc.angle));
 		closest_v_wall = get_next_v_wall(data, norm_angle(data->rc.angle));
-		printf("b\n");
 		if (closest_v_wall <= closest_h_wall)
 			data->rc.distance = closest_v_wall;
 		else

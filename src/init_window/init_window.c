@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:11:56 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 20:44:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 21:15:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	key_event(int keycode, t_data *d)
 {
 	mlx_destroy_image(d->w.mlx, d->w.img.image);
 	ft_putnbr_fd(keycode, 1);
-	if (keycode == 53)
+	if (keycode == ESC_KEY)
 		escape_event(&d->w);
 	// else
 	// 		more_key(keycode, d);

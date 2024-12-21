@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 18:48:51 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 21:17:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int	create_file(t_map *map)
 	if (!map->file_map)
 		return (1);
 	add_in_file(map, map->i - i);
-	printf("file_map>\n%s\n<", map->file_map);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:57:06 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 18:48:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 21:17:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	init_map(t_map *map, char *file)
 		map->nb_line++;
 	}
 	close(fd);
-	printf("%s\n", map->file);
 	if (init_info_map(map) != 0)
 		return (1);
 	load_map(map, file);
