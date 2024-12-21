@@ -133,9 +133,11 @@ void calc_rays(t_data *data)
 	data->rc.angle = data->player.angle - (data->player.fov / 2);
 	while(ray < SCREEN_WIDTH)
 	{
+		printf("a\n");
 		data->rc.wall_flag = 0;
 		closest_h_wall = get_next_h_wall(data, norm_angle(data->rc.angle));
 		closest_v_wall = get_next_v_wall(data, norm_angle(data->rc.angle));
+		printf("b\n");
 		if (closest_v_wall <= closest_h_wall)
 			data->rc.distance = closest_v_wall;
 		else
@@ -147,18 +149,18 @@ void calc_rays(t_data *data)
 		ray++;
 		data->rc.angle += (data->player.fov / SCREEN_WIDTH);
 	}
-	image_to_window(data->w.mlx, data);
+	// image_to_window(data->w.mlx, data);
 }
 
-void exec_game(t_data *data)
-{
-	t_win *mlx;
+// void exec_game(t_data *data)
+// {
+// 	t_win *mlx;
 
-	mlx = &data->w;
-	mlx->img.image = mlx_new_image(data->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx->img.buffer = mlx_get_data_addr(mlx->img.image, \
-			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
-	calc_rays(data);
-//	mlx_hook(data->w, 2, 1L << 0, generate_event, data);
-	mlx_loop(mlx->mlx);
-}
+// 	mlx = &data->w;
+// 	mlx->img.image = mlx_new_image(data->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+// 	mlx->img.buffer = mlx_get_data_addr(mlx->img.image,
+// 			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
+// 	calc_rays(data);
+// 	mlx_loop(mlx->mlx);
+// //	mlx_hook(data->w, 2, 1L << 0, generate_event, data);
+// }

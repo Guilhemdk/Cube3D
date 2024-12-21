@@ -41,6 +41,7 @@ int		is_spawn(char *str, int i);
 
 //init window
 int	init_window(t_data *d);
+void image_to_window(t_win *mlx, t_data *data);
 
 //utils
 void	*safe_malloc(size_t bytes, t_data *data);

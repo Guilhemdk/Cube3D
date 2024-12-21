@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/16 13:33:20 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2024/12/21 21:00:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (printf("ERROR\n"));
 	init_struct(&data.m);
+	init_player(&data);
 	if (init_map(&data.m, av[1]) > 0)
 		return(free_map(&data.m), 1);
 	else
 		printf("\nGG !\n");
 	init_window(&data);
-	exec_game(&data);
+	// exec_game(&data);
 	// exit propre
 	free_map(&data.m);
 	return (0);

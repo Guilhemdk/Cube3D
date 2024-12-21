@@ -1,8 +1,8 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-# define SCREEN_WIDTH 1680
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 1080
+# define SCREEN_HEIGHT 720
 # define FOV 60
 # define PI 3.14159265358979323846
 # define TILE_SIZE 30
