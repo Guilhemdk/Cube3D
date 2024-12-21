@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:00:40 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/20 12:41:07 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/12/20 14:47:48 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	free_map(t_map *map)
 	if (map->map)
 	{
 		while (map->map[++i])
-			free(map[i]);
+			free(map->map[i]);
 	}
 }
 
 void	error(t_data *data, char *msg)
 {
 	write(1, &msg, ft_strlen(msg));
-	free_map(data->m);
+	free_map(&data->m);
 }

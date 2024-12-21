@@ -6,11 +6,11 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:32:36 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/20 11:50:37 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/12/20 14:36:23 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 int	is_spawn(char *str, int i)
 {

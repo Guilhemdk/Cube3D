@@ -6,11 +6,11 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:30:42 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/22 14:01:28 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/12/20 14:35:58 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 int	check_path(t_map *map)
 {

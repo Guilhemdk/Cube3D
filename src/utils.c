@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 20:36:53 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/11 13:50:23 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:44:13 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-char **set_tab(t_data *data)
+void set_tab(t_data *data)
 {
 	int h;
 	int w;

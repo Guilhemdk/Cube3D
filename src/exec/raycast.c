@@ -159,6 +159,6 @@ void exec_game(t_data *data)
 	mlx->img.buffer = mlx_get_data_addr(mlx->img.image, \
 			&mlx->img.pixel_bits, &mlx->img.line_bytes, &mlx->img.endian);
 	calc_rays(data);
-	mlx_hook(data->win, 2, 1L << 0, generate_event, data);
+//	mlx_hook(data->w, 2, 1L << 0, generate_event, data);
 	mlx_loop(mlx->mlx);
 }

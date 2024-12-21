@@ -6,11 +6,11 @@
 /*   By: pitroin <pitroin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:57:06 by pitroin           #+#    #+#             */
-/*   Updated: 2024/11/20 11:53:05 by pitroin          ###   ########.fr       */
+/*   Updated: 2024/12/20 14:35:12 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../includes/Cube3D.h"
 
 int	check_type_map(char *file)
 {

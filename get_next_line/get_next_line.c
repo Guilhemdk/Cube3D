@@ -6,7 +6,7 @@
 /*   By: gmiorcec <guilhemmdk@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:52:08 by gmiorcec          #+#    #+#             */
-/*   Updated: 2024/06/10 11:12:40 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:34:34 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		*(read_content + read_bytes) = '\0';
-		read_buffer = ft_strjoin(read_buffer, read_content);
+		read_buffer = ft_strjoin_g(read_buffer, read_content);
 	}
 	free(read_content);
 	read_content = read_line(read_buffer);
@@ -122,14 +122,14 @@ int main()
         perror("Error opening file");
         return 1;
     }
-    
+
     char *line;
     while ((line = get_next_line(fd)) != NULL)
     {
         printf("Line: %s", line);
         free(line);
     }
-    
+
     close(fd);
     return 0;
 }

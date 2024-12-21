@@ -20,10 +20,10 @@ void calc_rays(t_data *data);
 void exec_game(t_data *data);
 float norm_angle(float angle);
 void DDa(t_data *data, int ray);
-void putPixelToBuffer(int x, int y, int color);
-int getWallColor();
 void put_pixel(t_image *img, int x, int y, int color);
 
+//keys
+int generate_event(int key, t_data *data);
 
 //init map
 int		init_map(t_map *map, char *file);
@@ -31,16 +31,16 @@ int		init_info_map(t_map *map);
 int		check_next_line(t_map *map, t_border *bord);
 int		check_border(t_map *map);
 int		check_path(t_map *map);
-
-//utils_map
-int		is_spawn(char *str, int i);
 int		not_wall(t_map *map, t_border *bord, int f);
+int		is_spawn(char *str, int i);
+
 
 //init window
 int	init_window(t_data *d);
 
 //utils
 void	*safe_malloc(size_t bytes, t_data *data);
+void	set_tab(t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 
 //free
