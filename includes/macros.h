@@ -7,11 +7,16 @@
 # define PI 3.14159265358979323846
 # define TILE_SIZE 30
 
+# define PLAYER_SPEED 1
 # define LEFT_KEY 113
 # define RIGHT_KEY 100
-# define FORWARD_KEY 122
-# define BACKWARD_KEY 115
+# define UP_KEY 122
+# define DOWN_KEY 115
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
 # define ESC_KEY 65307
+# define MOUSE_SENSITIVITY 0.05
+# define DIST_MOUSE_WRAP 20
 
 # define PATH_N	"../textures/N.xpm"
 # define PATH_S	"../textures/S.xpm"

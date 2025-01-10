@@ -35,8 +35,10 @@ SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
        src/init_map/init_info_map.c \
        src/init_map/textures_map.c \
        src/init_window/init_window.c \
-       src/exec/DDA.c \
-       src/exec/raycast.c \
+       src/exec/map_rendering/DDA.c \
+       src/exec/map_rendering/raycast.c \
+       src/exec/events/handle_keys.c \
+       src/exec/events/move_player.c \
        src/utils.c \
        src/free.c
 

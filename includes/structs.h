@@ -76,6 +76,9 @@ typedef struct s_player
 	int posY;
 	float fov;
 	double angle;
+	double rotation;
+	int move_l_r; // 1 = left, -1 = right
+	int move_u_d; // 1 = up, -1 = down
 }	t_player;
 
 typedef struct s_data

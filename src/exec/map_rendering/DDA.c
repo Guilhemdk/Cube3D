@@ -1,11 +1,11 @@
-#include "../../includes/Cube3D.h"
+#include "../../../includes/Cube3D.h"
 
 static int get_color(t_data *data, int wall_flag)
 {
 	data->rc.angle = norm_angle(data->rc.angle);
 	if (wall_flag == 0)
 	{
-		if (data->rc.angle > PI / 2 && data->rc.angle < 3 * PI / 2)
+		if (data->rc.angle > PI / 2 && data->rc.angle < 3 * (PI / 2))
 			return (0x00FF00FF); //W
 		else
 			return (0xFFFF00FF); //E
@@ -37,10 +37,10 @@ static void draw_floor_ceiling(t_data *data, int ray, int top_pix, int bot_pix)
 
 	i = bot_pix;
 	while(i < SCREEN_HEIGHT)
-		put_pixel(&data->w.img, ray, i++, 0x000000FF);
+		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF); //floor
 	i = 0;
 	while(i < top_pix)
-		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF);
+		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF); //ceiling
 }
 
 void DDa(t_data *data, int ray)
@@ -50,9 +50,9 @@ void DDa(t_data *data, int ray)
 	double top_pix;
 
 	data->rc.distance *= cos(norm_angle(data->rc.angle - data->player.angle));
-	wall_height = (TILE_SIZE / data->rc.distance) * ((SCREEN_WIDTH / 2) / tan(data->player.fov / 2));
-	bot_pix = (SCREEN_HEIGHT / 2) + (wall_height / 2);
-	top_pix = (SCREEN_HEIGHT / 2) - (wall_height / 2);
+	wall_height = (TILE_SIZE / data->rc.distance) * (((double)SCREEN_WIDTH / 2) / tan(data->player.fov / 2));
+	bot_pix = ((double)SCREEN_HEIGHT / 2) + (wall_height / 2);
+	top_pix = ((double)SCREEN_HEIGHT / 2) - (wall_height / 2);
 	if (bot_pix > SCREEN_HEIGHT)
 		bot_pix = SCREEN_HEIGHT;
 	if (top_pix < 0)

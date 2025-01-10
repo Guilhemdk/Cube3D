@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:15:48 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 21:17:38 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/22 13:35:41 by gmiorcec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_spawn(char *str, int i)
 {
-	if (str[i] == 'S' || str[i] == 'N' || str[i] == 'O'
+	if (str[i] == 'S' || str[i] == 'N' || str[i] == 'E'
 		|| str[i] == 'W')
 		return (0);
 	return (1);

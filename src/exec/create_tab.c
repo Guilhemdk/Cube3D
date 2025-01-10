@@ -3,6 +3,7 @@
 
 void set_tab(t_data *data)
 {
+	/*
 	int h;
 	int w;
 	int i;
@@ -17,4 +18,7 @@ void set_tab(t_data *data)
 		while(data->m.file_map[i] && data->m.file_map[i++] != '\n')
 			data->m.map[h][++w] = data->m.file_map[i];
 	}
+	*/
+
+	data->m.map = ft_split(data->m.file_map, '\n');
 }

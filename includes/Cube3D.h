@@ -24,6 +24,11 @@ void put_pixel(t_image *img, int x, int y, int color);
 
 //keys
 int generate_event(int key, t_data *data);
+int release_key(int key, t_data *data);
+int escape_event(t_win *w);
+
+//move_player
+void hook(t_data *data, double move_x, double move_y);
 
 //init map
 int		init_map(t_map *map, char *file);
@@ -40,8 +45,8 @@ int		is_spawn(char *str, int i);
 
 
 //init window
-int	init_window(t_data *d);
-void image_to_window(t_win *mlx, t_data *data);
+void	init_window(t_win *win);
+void image_to_window(t_win *win);
 
 //utils
 void	*safe_malloc(size_t bytes, t_data *data);
