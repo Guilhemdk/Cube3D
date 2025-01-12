@@ -37,7 +37,10 @@ int ray_orientation(float angle, char c)
 	if (c == 'x')
 	{
 		if (angle > 0 && angle < PI)
+        {
+            // printf("looking this way\n");
 			return (1); //looking at the upper half of the circle
+        }
 	}
 	else if (c == 'y')
 		if (angle > (PI / 2) && angle < (3 * PI) / 2)
@@ -62,52 +65,51 @@ int wall_hit(float x, float y, t_data *data)
 	return (0);
 }
 
-static float get_next_h_wall(t_data *data, float angle)
+static float get_next_h_wall(t_data *data, float angl)
 {
+	float h_x;
+	float h_y;
 	float x_step;
 	float y_step;
-	float xray_intersection;
-	float yray_intersection;
-	int io_wall;
+	int  pixel;
 
 	y_step = TILE_SIZE;
-	x_step = TILE_SIZE / tan(angle);
-	yray_intersection = floor(data->player.posY / (double)TILE_SIZE) * TILE_SIZE;
-	io_wall = inter_check(angle, &yray_intersection, &y_step, 1);
-	xray_intersection = data->player.posX + (yray_intersection - data->player.posY) / tan(angle);
-	if ((ray_orientation(angle, 'y') && x_step > 0) || (!ray_orientation(angle, 'y') && x_step < 0))
+	x_step = TILE_SIZE / tan(angl);
+	h_y = floor(data->player.posY / (float)TILE_SIZE) * TILE_SIZE;
+	pixel = inter_check(angl, &h_y, &y_step, 1);
+	h_x = data->player.posX + (h_y - data->player.posY) / tan(angl);
+	if ((ray_orientation(angl, 'y') && x_step > 0) || (!ray_orientation(angl, 'y') && x_step < 0)) // check x_step value
 		x_step *= -1;
-	while(!wall_hit(xray_intersection, yray_intersection - io_wall, data))
+	while (!wall_hit(h_x, h_y - pixel, data)) // check the wall hit whit the pixel value
 	{
-		yray_intersection += y_step;
-		xray_intersection += x_step;
+		h_x += x_step;
+		h_y += y_step;
 	}
-	return (sqrt(pow(xray_intersection - data->player.posX, 2) + pow(yray_intersection - data->player.posY, 2)));
+	return (sqrt(pow(h_x - data->player.posX, 2) + pow(h_y - data->player.posY, 2)));
 }
 
-static float get_next_v_wall(t_data *data, float angle)
+static float get_next_v_wall(t_data *data, float angl)
 {
+float v_x;
+	float v_y;
 	float x_step;
 	float y_step;
-	float xray_intersection;
-	float yray_intersection;
-	int io_wall;
+	int  pixel;
 
-	x_step = TILE_SIZE;
-	y_step = TILE_SIZE * tan(angle);
-	xray_intersection = floor(data->player.posX / (double)TILE_SIZE) * TILE_SIZE;
-	io_wall = inter_check(angle, &xray_intersection, &x_step, 1);
-	yray_intersection = data->player.posY + (xray_intersection - data->player.posX) * tan(angle);
-	if ((ray_orientation(angle, 'x') && y_step < 0) || (!ray_orientation(angle, 'x') && y_step > 0))
+	x_step = TILE_SIZE; 
+	y_step = TILE_SIZE * tan(angl);
+	v_x = floor(data->player.posX / (float)TILE_SIZE) * TILE_SIZE;
+	pixel = inter_check(angl, &v_x, &x_step, 0); // check the intersection and get the pixel value
+	v_y = data->player.posY + (v_x - data->player.posX) * tan(angl);
+	if ((ray_orientation(angl, 'x') && y_step < 0) || (!ray_orientation(angl, 'x') && y_step > 0)) // check y_step value
 		y_step *= -1;
-	while (!wall_hit(xray_intersection - io_wall, yray_intersection, data))
+	while (!wall_hit(v_x - pixel, v_y, data)) // check the wall hit whit the pixel value
 	{
-		xray_intersection += x_step;
-		yray_intersection += y_step;
+		v_x += x_step;
+		v_y += y_step;
 	}
-	return (sqrt(pow(xray_intersection - data->player.posX, 2) + pow(yray_intersection - data->player.posY, 2)));
+	return (sqrt(pow(v_x - data->player.posX, 2) + pow(v_y - data->player.posY, 2))); // get the distance
 }
-
 void calc_rays(t_data *data)
 {
 	double closest_h_wall;
@@ -118,7 +120,7 @@ void calc_rays(t_data *data)
 	ray = 0;
     closest_h_wall = 0;
     closest_v_wall = 0;
-    printf("player s angle = %f\n", data->player.angle);
+    // printf("player s angle = %f\n", data->player.angle);
 //	set_tab(data);
 	data->rc.angle = data->player.angle - (data->player.fov / 2);
 	while(ray < SCREEN_WIDTH)
