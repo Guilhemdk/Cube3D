@@ -83,6 +83,7 @@ typedef struct s_ray
 	float	h_hitY;
 	float	v_hitX;
 	float	v_hitY;
+	double	width_wall;
 }	t_ray;
 
 typedef struct s_wall

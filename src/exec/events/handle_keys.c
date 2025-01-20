@@ -47,7 +47,7 @@ int generate_event(int key, t_data *data)
     }
     else if (key == RIGHT_ARROW)
     {
-        printf("Right rotations\n"); 
+        printf("Right rotations\n");
         data->player.rotation = 1;
     }
     else if (key == ESC_KEY)

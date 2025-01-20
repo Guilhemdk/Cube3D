@@ -1,7 +1,7 @@
-NO ./textures/E.xpm
-SO ./textures/N.xpm
-WE ./textures/S.xpm
-EA ./textures/W.xpm
+NO ./textures/greystone.xpm
+SO ./textures/S.xpm
+WE ./textures/creeper.xpm
+EA ./textures/E.xpm
 F 83,170,55
 C 55,130,170
 

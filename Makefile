@@ -6,14 +6,14 @@
 #    By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:47:34 by pitroin           #+#    #+#              #
-#    Updated: 2025/01/20 10:35:02 by pitroin          ###   ########.fr        #
+#    Updated: 2025/01/20 13:32:52 by pitroin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -ggdb3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -ggdb3 -flto -march=native
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lpthread -ldl
 LIBFT_DIR = libft
 MLX_DIR = minilibx-linux

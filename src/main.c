@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 12:30:10 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/20 14:19:48 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ int game_loop(t_data *d)
     return (0);
 }
 
+void	affiche_info(t_data *d)
+{
+	printf("tex s:%s\n", d->m.file_SO);
+	printf("tex n:%s\n", d->m.file_NO);
+	printf("tex e:%s\n", d->m.file_EA);
+	printf("tex w:%s\n", d->m.file_WE);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -66,10 +74,10 @@ int	main(int ac, char **av)
 		printf("\nGG !\n");
 	data.m.map = ft_split(data.m.file_map, '\n');
 	if (!data.m.map)
-		return (error(&data, "Error creating map\n"), 1);
+		error(&data, "Error creating map\n");
 	init_player(&data);
 	if (init_window(&data))
-		return (error(&data, "Error init window\n"), 1);
+		return (1);
     mlx_loop_hook(data.w.mlx, &game_loop, &data);
     mlx_hook(data.w.win, 2, 1L << 0, generate_event, &data);
     mlx_hook(data.w.win, 3, 1L << 1, release_key, &data);

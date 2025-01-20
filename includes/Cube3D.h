@@ -45,6 +45,7 @@ int		is_spawn(char *str, int i);
 
 //tex_render
 int		load_textures(t_data *data, void *mlx);
+unsigned int	get_pixel_color(t_texture *texture, int x, int y);
 
 //init window
 int		init_window(t_data *d);

@@ -7,7 +7,7 @@
 # define PI 3.14159265358979323846
 # define TILE_SIZE 30
 
-# define PLAYER_SPEED 1
+# define PLAYER_SPEED 5
 # define LEFT_KEY 97
 # define RIGHT_KEY 100
 # define UP_KEY 119

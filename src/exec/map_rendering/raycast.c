@@ -125,14 +125,21 @@ void calc_rays(t_data *data)
 		closest_h_wall = get_next_h_wall(data, norm_angle(data->rc.angle));
 		closest_v_wall = get_next_v_wall(data, norm_angle(data->rc.angle));
 		if (closest_v_wall <= closest_h_wall)
+		{
 			data->rc.distance = closest_v_wall;
+			data->rc.wall_hit_x = data->rc.v_hitX;
+			data->rc.wall_hit_y = data->rc.v_hitY;
+		}
 		else
 		{
 			data->rc.distance = closest_h_wall;
 			data->rc.wall_flag = 1;
+			data->rc.wall_hit_x = data->rc.h_hitX;
+			data->rc.wall_hit_y = data->rc.h_hitY;
 		}
 		DDa(data, ray);
 		ray++;
+		// printf("ray %d\n", ray);
 		data->rc.angle += (data->player.fov / SCREEN_WIDTH);
 	}
 }
