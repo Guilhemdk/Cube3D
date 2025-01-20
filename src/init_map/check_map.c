@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:57:06 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/22 12:47:54 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:46:21 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ int	init_map(t_map *map, char *file)
 	close(fd);
 	if (init_info_map(map) != 0)
 		return (1);
-//	load_map(map, file);
 	return (0);
 }

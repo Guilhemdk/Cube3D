@@ -15,7 +15,7 @@
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define ESC_KEY 65307
-# define MOUSE_SENSITIVITY 0.05
+# define MOUSE_SENSITIVITY 0.08
 # define DIST_MOUSE_WRAP 20
 
 # define PATH_N	"../textures/N.xpm"

@@ -6,18 +6,16 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:00:40 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 11:02:13 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:31:10 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cube3D.h"
 
-
 void	free_map(t_map *map)
 {
-	int i;
+	int	i;
 
-	printf("ET LA \n");
 	if (map->file)
 		free(map->file);
 	if (map->file_SO)
@@ -38,10 +36,7 @@ void	free_map(t_map *map)
 	if (map->map)
 	{
 		while (map->map[i])
-		{
-			printf("%s\n", map->map[i]);
 			free(map->map[i++]);
-		}
 		free(map->map);
 	}
 }

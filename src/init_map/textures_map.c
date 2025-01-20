@@ -6,42 +6,11 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 10:17:20 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:49:23 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/Cube3D.h"
-
-void load_map(t_map *map, const char *filename)
-{
-    int     fd;
-    char    *line;
-    int     i;
-
-    // Allouer de la mémoire pour le tableau des lignes
-    map->map = malloc(sizeof(char *) * (map->nb_line + 1)); // +1 pour NULL à la fin
-    if (!map->map)
-        return; // Gestion d'erreur d'allocation mémoire
-
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-    {
-        free(map->map);
-        map->map = NULL; // Protection en cas d'échec
-        return; // Gestion d'erreur d'ouverture de fichier
-    }
-
-    i = 0;
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        map->map[i] = ft_strdup(line); // Chaque ligne est stockée dans le tableau
-		free(line);
-        i++;
-    }
-    map->map[i] = NULL; // Marquer la fin du tableau
-    close(fd);
-}
-
 
 char	*path_elem(t_map *map)
 {
@@ -53,8 +22,8 @@ char	*path_elem(t_map *map)
 	while (map->file[map->i] == ' ')
 		map->i++;
 	size = 0;
-	while (map->file[map->i+ size] != '\n'
-			&& map->file[map->i + size] != '\0')
+	while (map->file[map->i + size] != '\n'
+		&& map->file[map->i + size] != '\0')
 		size++;
 	elem = malloc(sizeof(char) * (size + 1));
 	if (!elem)
@@ -101,11 +70,11 @@ int	id_texture(t_map *map)
 
 unsigned int	rgb_to_hex(char *rgb_str)
 {
-	int		r;
-	int		g;
-	int		b;
-	char	**rgb_values;
-	unsigned int hex_color;
+	int				r;
+	int				g;
+	int				b;
+	char			**rgb_values;
+	unsigned int	hex_color;
 
 	rgb_values = ft_split(rgb_str, ',');
 	if (!rgb_values)
@@ -137,7 +106,7 @@ int	id_color(t_map *map)
 		map->color_c = path_elem(map);
 		if (!map->color_c)
 			return (-1);
-		map->hex_c =  rgb_to_hex(map->color_c);
+		map->hex_c = rgb_to_hex(map->color_c);
 	}
 	return (0);
 }

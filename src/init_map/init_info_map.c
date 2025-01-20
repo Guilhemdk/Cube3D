@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 21:17:43 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/20 16:47:15 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	char_map(t_map *map)
 		if (map->file[map->i] == '1' || map->file[map->i] == '0'
 			|| map->file[map->i] == '\n' || map->file[map->i] == ' '
 			|| (map->file[map->i] >= 9 && map->file[map->i] <= 13))
-				map->i++;
+			map->i++;
 		else if (is_spawn(map->file, map->i) == 0)
 		{
 			start++;
@@ -123,12 +123,12 @@ int	ft_search_elem(t_map *map)
 		if (map->file[map->i] == '1')
 		{
 			i = map->i;
-			if (char_map(map) != 0 )
+			if (char_map(map) != 0)
 				return (1);
 			map->i = i;
 			if (create_file(map) != 0)
 				return (1);
-			return(check_border(map));
+			return (check_border(map));
 		}
 		else if (id_texture(map) == -1)
 			return (printf("Error allocation malloc\n"));
