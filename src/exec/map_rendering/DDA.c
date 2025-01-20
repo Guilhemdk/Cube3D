@@ -6,7 +6,7 @@ static int get_color(t_data *data, int wall_flag)
 	if (wall_flag == 0)
 	{
 		if (data->rc.angle > PI / 2 && data->rc.angle < 3 * (PI / 2))
-            return (0x00FF00FF); //W
+            return (0x00FF0000); //W
 		else
 			return (0xFFFF00FF); //E
 	}
@@ -37,10 +37,10 @@ static void draw_floor_ceiling(t_data *data, int ray, int top_pix, int bot_pix)
 
 	i = bot_pix;
 	while(i < SCREEN_HEIGHT)
-		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF); //floor
+		put_pixel(&data->w.img, ray, i++, data->m.hex_f); //floor
 	i = 0;
 	while(i < top_pix)
-		put_pixel(&data->w.img, ray, i++, 0xFFFFFFFF); //ceiling
+		put_pixel(&data->w.img, ray, i++, data->m.hex_c); //ceiling
 }
 
 void DDa(t_data *data, int ray)

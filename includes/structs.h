@@ -22,6 +22,8 @@ typedef struct s_map
 	char	*file_EA;
 	char	*color_f;
 	char	*color_c;
+	unsigned int hex_f;
+	unsigned int hex_c;
 	char	dir_spawn;
 	int		nb_line;
 	int		x_spawn;
@@ -39,6 +41,16 @@ typedef struct s_image
 	char	*buffer;
 	void	*image;
 }	t_image;
+
+typedef struct s_texture {
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_texture;
 
 typedef struct s_win
 {

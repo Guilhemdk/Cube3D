@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 21:17:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/20 10:17:20 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,30 @@ int	id_texture(t_map *map)
 	return (0);
 }
 
+unsigned int	rgb_to_hex(char *rgb_str)
+{
+	int		r;
+	int		g;
+	int		b;
+	char	**rgb_values;
+	unsigned int hex_color;
+
+	rgb_values = ft_split(rgb_str, ',');
+	if (!rgb_values)
+		return (0);
+	r = atoi(rgb_values[0]);
+	g = atoi(rgb_values[1]);
+	b = atoi(rgb_values[2]);
+	free(rgb_values[0]);
+	free(rgb_values[1]);
+	free(rgb_values[2]);
+	free(rgb_values);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (0);
+	hex_color = (r << 16) | (g << 8) | b;
+	return (hex_color);
+}
+
 int	id_color(t_map *map)
 {
 	if (map->file[map->i] == 'F' && ft_isalpha(map->file[map->i + 1]) == 0)
@@ -106,12 +130,14 @@ int	id_color(t_map *map)
 		map->color_f = path_elem(map);
 		if (!map->color_f)
 			return (-1);
+		map->hex_f = rgb_to_hex(map->color_f);
 	}
 	if (map->file[map->i] == 'C' && ft_isalpha(map->file[map->i + 1]) == 0)
 	{
 		map->color_c = path_elem(map);
 		if (!map->color_c)
 			return (-1);
+		map->hex_c =  rgb_to_hex(map->color_c);
 	}
 	return (0);
 }

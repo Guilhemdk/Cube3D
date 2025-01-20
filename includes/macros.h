@@ -8,9 +8,9 @@
 # define TILE_SIZE 30
 
 # define PLAYER_SPEED 1
-# define LEFT_KEY 113
+# define LEFT_KEY 97
 # define RIGHT_KEY 100
-# define UP_KEY 122
+# define UP_KEY 119
 # define DOWN_KEY 115
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
