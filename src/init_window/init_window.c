@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:11:56 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/22 16:45:03 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:29:16 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,16 @@ void image_to_window(t_win *win)
             &win->img.pixel_bits, &win->img.line_bytes, &win->img.endian);
 }
 
-void	init_window(t_win *win)
+int	init_window(t_data *d)
 {
-	win->mlx = mlx_init();
-	win->win = mlx_new_window(win->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
-	win->img.image = mlx_new_image(win->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	win->img.buffer = mlx_get_data_addr(win->img.image, \
-			    &win->img.pixel_bits, &win->img.line_bytes, &win->img.endian);
-    if (!win->img.image || !win->img.buffer)
-        exit(EXIT_FAILURE);
+	d->w.mlx = mlx_init();
+	d->w.win = mlx_new_window(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
+	if (load_textures(d, d->w.mlx) > 0)
+		return (1);
+	d->w.img.image = mlx_new_image(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	d->w.img.buffer = mlx_get_data_addr(d->w.img.image, \
+			&d->w.img.pixel_bits, &d->w.img.line_bytes, &d->w.img.endian);
+	if (!d->w.img.image || !d->w.img.buffer)
+		return (1);
+	return (0);
 }

@@ -64,6 +64,10 @@ typedef struct s_win
 	double	rotation_angle_y;
 	double	rotation_angle_z;
 	int		perspective;
+	t_texture	tex_no;
+	t_texture	tex_so;
+	t_texture	tex_we;
+	t_texture	tex_ea;
 }	t_win;
 
 //Structs Guilhem
@@ -72,6 +76,13 @@ typedef struct s_ray
 	double angle;
 	double distance;
 	double wall_flag;
+	double wall_hit;
+	double wall_hit_x;
+	double wall_hit_y;
+	float	h_hitX;
+	float	h_hitY;
+	float	v_hitX;
+	float	v_hitY;
 }	t_ray;
 
 typedef struct s_wall

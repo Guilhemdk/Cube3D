@@ -67,48 +67,44 @@ int wall_hit(float x, float y, t_data *data)
 
 static float get_next_h_wall(t_data *data, float angl)
 {
-	float h_x;
-	float h_y;
 	float x_step;
 	float y_step;
 	int  pixel;
 
 	y_step = TILE_SIZE;
 	x_step = TILE_SIZE / tan(angl);
-	h_y = floor(data->player.posY / (float)TILE_SIZE) * TILE_SIZE;
-	pixel = inter_check(angl, &h_y, &y_step, 1);
-	h_x = data->player.posX + (h_y - data->player.posY) / tan(angl);
+	data->rc.h_hitY = floor(data->player.posY / (float)TILE_SIZE) * TILE_SIZE;
+	pixel = inter_check(angl, &data->rc.h_hitY, &y_step, 1);
+	data->rc.h_hitX = data->player.posX + (data->rc.h_hitY - data->player.posY) / tan(angl);
 	if ((ray_orientation(angl, 'y') && x_step > 0) || (!ray_orientation(angl, 'y') && x_step < 0)) // check x_step value
 		x_step *= -1;
-	while (!wall_hit(h_x, h_y - pixel, data)) // check the wall hit whit the pixel value
+	while (!wall_hit(data->rc.h_hitX, data->rc.h_hitY - pixel, data)) // check the wall hit whit the pixel value
 	{
-		h_x += x_step;
-		h_y += y_step;
+		data->rc.h_hitX += x_step;
+		data->rc.h_hitY += y_step;
 	}
-	return (sqrt(pow(h_x - data->player.posX, 2) + pow(h_y - data->player.posY, 2)));
+	return (sqrt(pow(data->rc.h_hitX - data->player.posX, 2) + pow(data->rc.h_hitY - data->player.posY, 2)));
 }
 
 static float get_next_v_wall(t_data *data, float angl)
 {
-float v_x;
-	float v_y;
 	float x_step;
 	float y_step;
 	int  pixel;
 
-	x_step = TILE_SIZE; 
+	x_step = TILE_SIZE;
 	y_step = TILE_SIZE * tan(angl);
-	v_x = floor(data->player.posX / (float)TILE_SIZE) * TILE_SIZE;
-	pixel = inter_check(angl, &v_x, &x_step, 0); // check the intersection and get the pixel value
-	v_y = data->player.posY + (v_x - data->player.posX) * tan(angl);
+	data->rc.v_hitX = floor(data->player.posX / (float)TILE_SIZE) * TILE_SIZE;
+	pixel = inter_check(angl, &data->rc.v_hitX, &x_step, 0); // check the intersection and get the pixel value
+	data->rc.v_hitY = data->player.posY + (data->rc.v_hitX - data->player.posX) * tan(angl);
 	if ((ray_orientation(angl, 'x') && y_step < 0) || (!ray_orientation(angl, 'x') && y_step > 0)) // check y_step value
 		y_step *= -1;
-	while (!wall_hit(v_x - pixel, v_y, data)) // check the wall hit whit the pixel value
+	while (!wall_hit(data->rc.v_hitX - pixel, data->rc.v_hitY, data)) // check the wall hit whit the pixel value
 	{
-		v_x += x_step;
-		v_y += y_step;
+		data->rc.v_hitX += x_step;
+		data->rc.v_hitY += y_step;
 	}
-	return (sqrt(pow(v_x - data->player.posX, 2) + pow(v_y - data->player.posY, 2))); // get the distance
+	return (sqrt(pow(data->rc.v_hitX - data->player.posX, 2) + pow(data->rc.v_hitY - data->player.posY, 2))); // get the distance
 }
 void calc_rays(t_data *data)
 {

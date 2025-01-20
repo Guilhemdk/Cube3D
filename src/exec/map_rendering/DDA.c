@@ -20,15 +20,25 @@ static int get_color(t_data *data, int wall_flag)
 	return (0);
 }
 
-static void draw_wall(t_data *data, int ray, int top_pix, double bot_pix)
+static void draw_wall(t_data *data, int ray, double top_pix, double bot_pix)
 {
 	int color;
+	// int	flag = 0;
 
 	color = get_color(data, data->rc.wall_flag); //TODO
 	//if (orientation == 'I')
 		//error(data);
-	while(top_pix < bot_pix)
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
+
+	while(top_pix < bot_pix - 3)
+	{
 		put_pixel(&data->w.img, ray, top_pix++, color);
+	}
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
+	put_pixel(&data->w.img, ray, top_pix++, 0x00000000);
 }
 
 static void draw_floor_ceiling(t_data *data, int ray, int top_pix, int bot_pix)

@@ -40,13 +40,15 @@ int		ft_search_elem(t_map *map);
 int		id_color(t_map *map);
 int		id_texture(t_map *map);
 char	*path_elem(t_map *map);
-
 int		is_spawn(char *str, int i);
 
 
+//tex_render
+int		load_textures(t_data *data, void *mlx);
+
 //init window
-void	init_window(t_win *win);
-void image_to_window(t_win *win);
+int		init_window(t_data *d);
+void	image_to_window(t_win *win);
 
 //utils
 void	*safe_malloc(size_t bytes, t_data *data);

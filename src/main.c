@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/22 13:34:12 by gmiorcec         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:30:10 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ void	init_player(t_data *data)
 		data->player.angle = PI / 2;
 	else
 		data->player.angle = PI;
-
-
+	data->rc.h_hitX = 0.0f;
+	data->rc.h_hitY = 0.0f;
+	data->rc.v_hitX = 0.0f;
+	data->rc.v_hitY = 0.0f;
+	data->rc.wall_hit_x = 0.0;
+	data->rc.wall_hit_y = 0.0;
+	data->rc.wall_hit = 0.0;
+	data->rc.wall_flag =  0;
 }
 
 int game_loop(t_data *d)
@@ -60,10 +66,10 @@ int	main(int ac, char **av)
 		printf("\nGG !\n");
 	data.m.map = ft_split(data.m.file_map, '\n');
 	if (!data.m.map)
-		error(&data, "Error creating map\n");
-
+		return (error(&data, "Error creating map\n"), 1);
 	init_player(&data);
-	init_window(&data.w);
+	if (init_window(&data))
+		return (error(&data, "Error init window\n"), 1);
     mlx_loop_hook(data.w.mlx, &game_loop, &data);
     mlx_hook(data.w.win, 2, 1L << 0, generate_event, &data);
     mlx_hook(data.w.win, 3, 1L << 1, release_key, &data);

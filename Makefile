@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:47:34 by pitroin           #+#    #+#              #
-#    Updated: 2024/12/21 18:58:17 by marvin           ###   ########.fr        #
+#    Updated: 2025/01/20 10:35:02 by pitroin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
        src/init_window/init_window.c \
        src/exec/map_rendering/DDA.c \
        src/exec/map_rendering/raycast.c \
+	   src/exec/map_rendering/tex_render.c \
        src/exec/events/handle_keys.c \
        src/exec/events/move_player.c \
        src/utils.c \
