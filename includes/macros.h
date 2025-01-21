@@ -18,10 +18,10 @@
 # define MOUSE_SENSITIVITY 0.08
 # define DIST_MOUSE_WRAP 20
 
-# define PATH_N	"../textures/N.xpm"
-# define PATH_S	"../textures/S.xpm"
-# define PATH_E	"../textures/E.xpm"
-# define PATH_W	"../textures/W.xpm"
+# define PATH_N	"./textures/N.xpm"
+# define PATH_S	"./textures/S.xpm"
+# define PATH_E	"./textures/E.xpm"
+# define PATH_W	"./textures/W.xpm"
 # define MALLOC_ERR "Error mallocing a variable"
 # define MLX_ERR "Error generating mlx image/window"
 

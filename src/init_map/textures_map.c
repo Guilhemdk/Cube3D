@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:49:23 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/21 08:01:46 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,21 @@ int	id_color(t_map *map)
 			return (-1);
 		map->hex_c = rgb_to_hex(map->color_c);
 	}
+	return (0);
+}
+
+int	not_elem(t_map *map)
+{
+	if (map->file_NO == NULL)
+		map->file_NO = ft_strdup(PATH_N);
+	if (map->file_SO == NULL)
+		map->file_SO = ft_strdup(PATH_S);
+	if (map->file_WE == NULL)
+		map->file_WE = ft_strdup(PATH_W);
+	if (map->file_EA == NULL)
+		map->file_EA = ft_strdup(PATH_E);
+	if (!map->file_NO || !map->file_SO || !map->file_WE
+		|| !map->file_EA)
+		return (1);
 	return (0);
 }

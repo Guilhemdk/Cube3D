@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:57:06 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:46:21 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/21 08:01:34 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	init_map(t_map *map, char *file)
 	}
 	close(fd);
 	if (init_info_map(map) != 0)
+		return (1);
+	if (not_elem(map) > 0)
 		return (1);
 	return (0);
 }

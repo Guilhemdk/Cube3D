@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:11:56 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:50:59 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/21 08:07:51 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ int	init_window(t_data *d)
 	d->w.mlx = mlx_init();
 	d->w.win = mlx_new_window(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
 	if (load_textures(d, d->w.mlx) > 0)
-		return (1);
+	{
+		printf("Error: textures not valid !\n");
+		mlx_destroy_window(d->w.mlx, d->w.win);
+		return (free(d->w.mlx), 1);
+	}
 	d->w.img.image = mlx_new_image(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	d->w.img.buffer = mlx_get_data_addr(d->w.img.image, \
 			&d->w.img.pixel_bits, &d->w.img.line_bytes, &d->w.img.endian);

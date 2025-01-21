@@ -38,6 +38,7 @@ int		id_color(t_map *map);
 int		id_texture(t_map *map);
 char	*path_elem(t_map *map);
 int		is_spawn(char *str, int i);
+int		not_elem(t_map *map);
 
 //raycast
 float	norm_angle(float angle);
