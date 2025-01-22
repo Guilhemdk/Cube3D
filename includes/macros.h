@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:31:06 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/22 11:31:07 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:13:04 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define PI 3.14159265358979323846
 # define TILE_SIZE 30
 
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 3
 # define LEFT_KEY 97
 # define RIGHT_KEY 100
 # define UP_KEY 119
