@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:50 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:56:24 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:42:33 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static void	move_player(t_data *data, double move_x, double move_y)
 	int	new_x;
 	int	new_y;
 
-	new_x = roundf(data->player.posX + move_x);
-	new_y = roundf(data->player.posY + move_y);
+	new_x = roundf(data->player.posx + move_x);
+	new_y = roundf(data->player.posy + move_y);
 	map_x = (new_x / TILE_SIZE);
 	map_y = (new_y / TILE_SIZE);
 	if (data->m.map[map_y][map_x] != '1' && \
-			(data->m.map[map_y][data->player.posX / TILE_SIZE] != '1' && \
-			data->m.map[data->player.posY / TILE_SIZE][map_x] != '1'))
+			(data->m.map[map_y][data->player.posx / TILE_SIZE] != '1' && \
+			data->m.map[data->player.posy / TILE_SIZE][map_x] != '1'))
 	{
-		data->player.posX = new_x;
-		data->player.posY = new_y;
+		data->player.posx = new_x;
+		data->player.posy = new_y;
 	}
 }
 

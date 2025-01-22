@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cube3D.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 09:35:22 by pitroin           #+#    #+#             */
+/*   Updated: 2025/01/22 11:08:54 by pitroin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE3D_H
-#define CUBE3D_H
+# define CUBE3D_H
 
 # include <math.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
-#include "structs.h"
-#include "macros.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
+# include "structs.h"
+# include "macros.h"
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 
 //init_game_vars
-void init_player(t_data *data);
+void	init_player(t_data *data);
 
 //raycasting
 void	calc_rays(t_data *d);
@@ -21,9 +33,9 @@ void	dda(t_data *d);
 void	put_pixel(t_image *img, int x, int y, int color);
 
 //keys
-int	generate_event(int key, t_data *data);
-int	release_key(int key, t_data *data);
-int	escape_event(t_win *w);
+int		generate_event(int key, t_data *data);
+int		release_key(int key, t_data *data);
+int		escape_event(t_win *w);
 
 //move_player
 void	hook(t_data *data, double move_x, double move_y);
@@ -48,7 +60,6 @@ int		ray_orientation(float angle, char c);
 
 //tex_render
 int		load_textures(t_data *data, void *mlx);
-unsigned int	get_pixel_color(t_texture *texture, int x, int y);
 
 //init window
 int		init_window(t_data *d);
@@ -56,7 +67,6 @@ void	image_to_window(t_win *win);
 
 //utils
 void	*safe_malloc(size_t bytes, t_data *data);
-void	set_tab(t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 
 //free

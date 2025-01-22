@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   macros.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/22 11:31:06 by pitroin           #+#    #+#             */
+/*   Updated: 2025/01/22 11:31:07 by pitroin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MACROS_H
-#define MACROS_H
+# define MACROS_H
 
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 720
@@ -15,7 +27,7 @@
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define ESC_KEY 65307
-# define MOUSE_SENSITIVITY 0.08
+# define MOUSE_SENSITIVITY 0.07
 # define DIST_MOUSE_WRAP 20
 
 # define PATH_N	"./textures/N.xpm"

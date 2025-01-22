@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:47:15 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:52:21 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ int	ft_search_elem(t_map *map)
 				return (1);
 			return (check_border(map));
 		}
-		else if (id_texture(map) == -1)
-			return (printf("Error allocation malloc\n"));
-		else if (id_color(map) == -1)
-			return (printf("Error allocation malloc\n"));
+		else if (id_texture(map) != 0)
+			return (1);
+		else if (id_color(map) != 0)
+			return (1);
 		else
 			map->i++;
 	}

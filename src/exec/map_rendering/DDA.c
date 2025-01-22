@@ -6,11 +6,21 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:55 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 17:43:51 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:34:41 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/Cube3D.h"
+
+unsigned int	get_pixel_color(t_texture *texture, int x, int y)
+{
+	char	*pixel;
+
+	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
+		return (0);
+	pixel = texture->addr + (y * texture->line_length + x * (texture->bpp / 8));
+	return (*(unsigned int *)pixel);
+}
 
 int	get_color(t_data *d, int wall_flag, int tex_x, int tex_y)
 {

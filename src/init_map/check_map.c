@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:57:06 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/21 08:01:34 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:29:51 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,46 @@
 
 int	check_path(t_map *map)
 {
-	if (!map->file_NO)
+	if (!map->file_no)
 	{
-		map->file_NO = ft_strdup(PATH_N);
-		if (!map->file_NO)
+		map->file_no = ft_strdup(PATH_N);
+		if (!map->file_no)
 			return (1);
 	}
-	if (!map->file_SO)
+	if (!map->file_so)
 	{
-		map->file_SO = ft_strdup(PATH_S);
-		if (!map->file_SO)
+		map->file_so = ft_strdup(PATH_S);
+		if (!map->file_so)
 			return (1);
 	}
-	if (!map->file_EA)
+	if (!map->file_ea)
 	{
-		map->file_EA = ft_strdup(PATH_E);
-		if (!map->file_EA)
+		map->file_ea = ft_strdup(PATH_E);
+		if (!map->file_ea)
 			return (1);
 	}
-	if (!map->file_WE)
+	if (!map->file_we)
 	{
-		map->file_WE = ft_strdup(PATH_W);
-		if (!map->file_WE)
+		map->file_we = ft_strdup(PATH_W);
+		if (!map->file_we)
 			return (1);
 	}
+	return (0);
+}
+
+int	not_elem(t_map *map)
+{
+	if (map->file_no == NULL)
+		map->file_no = ft_strdup(PATH_N);
+	if (map->file_so == NULL)
+		map->file_so = ft_strdup(PATH_S);
+	if (map->file_we == NULL)
+		map->file_we = ft_strdup(PATH_W);
+	if (map->file_ea == NULL)
+		map->file_ea = ft_strdup(PATH_E);
+	if (!map->file_no || !map->file_so || !map->file_we
+		|| !map->file_ea)
+		return (1);
 	return (0);
 }
 
@@ -46,7 +62,7 @@ int	init_info_map(t_map *map)
 	map->i = -1;
 	if (ft_search_elem(map) != 0)
 		return (1);
-	if (check_path(map) != 0)
+	if (not_elem(map) > 0)
 		return (1);
 	return (0);
 }
@@ -60,6 +76,7 @@ int	check_type_map(char *file)
 		return (1);
 	if (ft_strcmp(check, ".cub") == 0)
 		return (0);
+	printf("Error: the file must be .cub\n");
 	return (1);
 }
 
@@ -86,8 +103,6 @@ int	init_map(t_map *map, char *file)
 	}
 	close(fd);
 	if (init_info_map(map) != 0)
-		return (1);
-	if (not_elem(map) > 0)
 		return (1);
 	return (0);
 }

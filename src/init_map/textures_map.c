@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/21 08:01:46 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:50:13 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,58 @@ char	*path_elem(t_map *map)
 	return (elem);
 }
 
+int	id_texture2(t_map *map)
+{
+	if (map->file[map->i] == 'W' && map->file[map->i + 1] == 'E')
+	{
+		if (!map->file_we)
+		{
+			map->file_we = path_elem(map);
+			if (!map->file_we)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture WE defined more than once\n"));
+	}
+	if (map->file[map->i] == 'E' && map->file[map->i + 1] == 'A')
+	{
+		if (!map->file_ea)
+		{
+			map->file_ea = path_elem(map);
+			if (!map->file_ea)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture EA defined more than once\n"));
+	}
+	return (0);
+}
+
 int	id_texture(t_map *map)
 {
 	if (map->file[map->i] == 'N' && map->file[map->i + 1] == 'O')
 	{
-		map->file_NO = path_elem(map);
-		if (!map->file_NO)
-			return (-1);
+		if (!map->file_no)
+		{
+			map->file_no = path_elem(map);
+			if (!map->file_no)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture NO defined more than once\n"));
 	}
 	if (map->file[map->i] == 'S' && map->file[map->i + 1] == 'O')
 	{
-		map->file_SO = path_elem(map);
-		if (!map->file_SO)
-			return (-1);
+		if (!map->file_so)
+		{
+			map->file_so = path_elem(map);
+			if (!map->file_so)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture SO defined more than once\n"));
 	}
-	if (map->file[map->i] == 'W' && map->file[map->i + 1] == 'E')
-	{
-		map->file_WE = path_elem(map);
-		if (!map->file_WE)
-			return (-1);
-	}
-	if (map->file[map->i] == 'E' && map->file[map->i + 1] == 'A')
-	{
-		map->file_EA = path_elem(map);
-		if (!map->file_EA)
-			return (-1);
-	}
-	return (0);
+	return (id_texture2(map));
 }
 
 unsigned int	rgb_to_hex(char *rgb_str)
@@ -96,33 +121,27 @@ int	id_color(t_map *map)
 {
 	if (map->file[map->i] == 'F' && ft_isalpha(map->file[map->i + 1]) == 0)
 	{
-		map->color_f = path_elem(map);
 		if (!map->color_f)
-			return (-1);
-		map->hex_f = rgb_to_hex(map->color_f);
+		{
+			map->color_f = path_elem(map);
+			if (!map->color_f)
+				return (printf("Error allocation malloc\n"));
+			map->hex_f = rgb_to_hex(map->color_f);
+		}
+		else
+			return (printf("Error: texture F defined more than once\n"));
 	}
 	if (map->file[map->i] == 'C' && ft_isalpha(map->file[map->i + 1]) == 0)
 	{
-		map->color_c = path_elem(map);
 		if (!map->color_c)
-			return (-1);
-		map->hex_c = rgb_to_hex(map->color_c);
+		{
+			map->color_c = path_elem(map);
+			if (!map->color_c)
+				return (printf("Error allocation malloc\n"));
+			map->hex_c = rgb_to_hex(map->color_c);
+		}
+		else
+			return (printf("Error: texture C defined more than once\n"));
 	}
-	return (0);
-}
-
-int	not_elem(t_map *map)
-{
-	if (map->file_NO == NULL)
-		map->file_NO = ft_strdup(PATH_N);
-	if (map->file_SO == NULL)
-		map->file_SO = ft_strdup(PATH_S);
-	if (map->file_WE == NULL)
-		map->file_WE = ft_strdup(PATH_W);
-	if (map->file_EA == NULL)
-		map->file_EA = ft_strdup(PATH_E);
-	if (!map->file_NO || !map->file_SO || !map->file_WE
-		|| !map->file_EA)
-		return (1);
 	return (0);
 }

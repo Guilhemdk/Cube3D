@@ -6,21 +6,11 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:55:06 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 17:10:25 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/21 09:42:12 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/Cube3D.h"
-
-unsigned int	get_pixel_color(t_texture *texture, int x, int y)
-{
-	char	*pixel;
-
-	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
-		return (0);
-	pixel = texture->addr + (y * texture->line_length + x * (texture->bpp / 8));
-	return (*(unsigned int *)pixel);
-}
 
 int	load_textures_2(t_data *data)
 {
@@ -44,13 +34,13 @@ int	load_textures_2(t_data *data)
 
 int	load_textures(t_data *data, void *mlx)
 {
-	data->w.tex_no.img = mlx_xpm_file_to_image(mlx, data->m.file_NO,
+	data->w.tex_no.img = mlx_xpm_file_to_image(mlx, data->m.file_no,
 			&data->w.tex_no.width, &data->w.tex_no.height);
-	data->w.tex_so.img = mlx_xpm_file_to_image(mlx, data->m.file_SO,
+	data->w.tex_so.img = mlx_xpm_file_to_image(mlx, data->m.file_so,
 			&data->w.tex_so.width, &data->w.tex_so.height);
-	data->w.tex_we.img = mlx_xpm_file_to_image(mlx, data->m.file_WE,
+	data->w.tex_we.img = mlx_xpm_file_to_image(mlx, data->m.file_we,
 			&data->w.tex_we.width, &data->w.tex_we.height);
-	data->w.tex_ea.img = mlx_xpm_file_to_image(mlx, data->m.file_EA,
+	data->w.tex_ea.img = mlx_xpm_file_to_image(mlx, data->m.file_ea,
 			&data->w.tex_ea.width, &data->w.tex_ea.height);
 	if (!data->w.tex_no.img || !data->w.tex_so.img
 		|| !data->w.tex_we.img || !data->w.tex_ea.img)

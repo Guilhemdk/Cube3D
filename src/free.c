@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:00:40 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 16:31:10 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:10:10 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	free_map(t_map *map)
 
 	if (map->file)
 		free(map->file);
-	if (map->file_SO)
-		free(map->file_SO);
-	if (map->file_NO)
-		free(map->file_NO);
-	if (map->file_WE)
-		free(map->file_WE);
-	if (map->file_EA)
-		free(map->file_EA);
+	if (map->file_so)
+		free(map->file_so);
+	if (map->file_no)
+		free(map->file_no);
+	if (map->file_we)
+		free(map->file_we);
+	if (map->file_ea)
+		free(map->file_ea);
 	if (map->color_c)
 		free(map->color_c);
 	if (map->color_f)

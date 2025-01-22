@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/21 08:03:16 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:42:33 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	init_struct(t_map *map)
 {
-	map->file_SO = NULL;
-	map->file_NO = NULL;
-	map->file_WE = NULL;
-	map->file_EA = NULL;
+	map->file_so = NULL;
+	map->file_no = NULL;
+	map->file_we = NULL;
+	map->file_ea = NULL;
+	map->file_map = NULL;
 	map->color_c = NULL;
 	map->color_f = NULL;
+	map->map = NULL;
 }
 
 void	init_player(t_data *data)
 {
-	data->player.posX = (data->m.x_spawn * TILE_SIZE) + TILE_SIZE / 2;
-	data->player.posY = (data->m.y_spawn * TILE_SIZE) + TILE_SIZE / 2;
+	data->player.posx = (data->m.x_spawn * TILE_SIZE) + TILE_SIZE / 2;
+	data->player.posy = (data->m.y_spawn * TILE_SIZE) + TILE_SIZE / 2;
 	data->player.fov = (FOV * PI) / 180;
 	if (data->m.dir_spawn == 'N')
 		data->player.angle = 3 * PI / 2;
@@ -35,10 +37,10 @@ void	init_player(t_data *data)
 		data->player.angle = PI / 2;
 	else
 		data->player.angle = PI;
-	data->rc.h_hitX = 0.0f;
-	data->rc.h_hitY = 0.0f;
-	data->rc.v_hitX = 0.0f;
-	data->rc.v_hitY = 0.0f;
+	data->rc.h_hitx = 0.0f;
+	data->rc.h_hity = 0.0f;
+	data->rc.v_hitx = 0.0f;
+	data->rc.v_hity = 0.0f;
 	data->rc.wall_hit_x = 0.0;
 	data->rc.wall_hit_y = 0.0;
 	data->rc.wall_hit = 0.0;
@@ -71,6 +73,7 @@ int	main(int ac, char **av)
 	mlx_loop_hook(data.w.mlx, &game_loop, &data);
 	mlx_hook(data.w.win, 2, 1L << 0, generate_event, &data);
 	mlx_hook(data.w.win, 3, 1L << 1, release_key, &data);
+	mlx_hook(data.w.win, 17, 0, escape_event, &data);
 	mlx_loop(data.w.mlx);
 	return (0);
 }
