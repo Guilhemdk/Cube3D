@@ -3,47 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:18:44 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 18:50:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/22 11:50:13 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/Cube3D.h"
-
-void load_map(t_map *map, const char *filename)
-{
-    int     fd;
-    char    *line;
-    int     i;
-
-    // Allouer de la mémoire pour le tableau des lignes
-	printf("%d\n", map->nb_line);
-    map->map = malloc(sizeof(char *) * (map->nb_line + 1)); // +1 pour NULL à la fin
-    if (!map->map)
-        return; // Gestion d'erreur d'allocation mémoire
-
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-    {
-        free(map->map);
-        map->map = NULL; // Protection en cas d'échec
-        return; // Gestion d'erreur d'ouverture de fichier
-    }
-
-    i = 0;
-    while ((line = get_next_line(fd)) != NULL)
-    {
-		printf("%s", line);
-        map->map[i] = ft_strdup(line); // Chaque ligne est stockée dans le tableau
-		free(line);
-        i++;
-    }
-    map->map[i] = NULL; // Marquer la fin du tableau
-    close(fd);
-}
-
 
 char	*path_elem(t_map *map)
 {
@@ -55,8 +22,8 @@ char	*path_elem(t_map *map)
 	while (map->file[map->i] == ' ')
 		map->i++;
 	size = 0;
-	while (map->file[map->i+ size] != '\n'
-			&& map->file[map->i + size] != '\0')
+	while (map->file[map->i + size] != '\n'
+		&& map->file[map->i + size] != '\0')
 		size++;
 	elem = malloc(sizeof(char) * (size + 1));
 	if (!elem)
@@ -72,48 +39,109 @@ char	*path_elem(t_map *map)
 	return (elem);
 }
 
+int	id_texture2(t_map *map)
+{
+	if (map->file[map->i] == 'W' && map->file[map->i + 1] == 'E')
+	{
+		if (!map->file_we)
+		{
+			map->file_we = path_elem(map);
+			if (!map->file_we)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture WE defined more than once\n"));
+	}
+	if (map->file[map->i] == 'E' && map->file[map->i + 1] == 'A')
+	{
+		if (!map->file_ea)
+		{
+			map->file_ea = path_elem(map);
+			if (!map->file_ea)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture EA defined more than once\n"));
+	}
+	return (0);
+}
+
 int	id_texture(t_map *map)
 {
 	if (map->file[map->i] == 'N' && map->file[map->i + 1] == 'O')
 	{
-		map->file_NO = path_elem(map);
-		if (!map->file_NO)
-			return (-1);
+		if (!map->file_no)
+		{
+			map->file_no = path_elem(map);
+			if (!map->file_no)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture NO defined more than once\n"));
 	}
 	if (map->file[map->i] == 'S' && map->file[map->i + 1] == 'O')
 	{
-		map->file_SO = path_elem(map);
-		if (!map->file_SO)
-			return (-1);
+		if (!map->file_so)
+		{
+			map->file_so = path_elem(map);
+			if (!map->file_so)
+				return (printf("Error allocation malloc\n"));
+		}
+		else
+			return (printf("Error: texture SO defined more than once\n"));
 	}
-	if (map->file[map->i] == 'W' && map->file[map->i + 1] == 'E')
-	{
-		map->file_WE = path_elem(map);
-		if (!map->file_WE)
-			return (-1);
-	}
-	if (map->file[map->i] == 'E' && map->file[map->i + 1] == 'A')
-	{
-		map->file_EA = path_elem(map);
-		if (!map->file_EA)
-			return (-1);
-	}
-	return (0);
+	return (id_texture2(map));
+}
+
+unsigned int	rgb_to_hex(char *rgb_str)
+{
+	int				r;
+	int				g;
+	int				b;
+	char			**rgb_values;
+	unsigned int	hex_color;
+
+	rgb_values = ft_split(rgb_str, ',');
+	if (!rgb_values)
+		return (0);
+	r = atoi(rgb_values[0]);
+	g = atoi(rgb_values[1]);
+	b = atoi(rgb_values[2]);
+	free(rgb_values[0]);
+	free(rgb_values[1]);
+	free(rgb_values[2]);
+	free(rgb_values);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (0);
+	hex_color = (r << 16) | (g << 8) | b;
+	return (hex_color);
 }
 
 int	id_color(t_map *map)
 {
 	if (map->file[map->i] == 'F' && ft_isalpha(map->file[map->i + 1]) == 0)
 	{
-		map->color_f = path_elem(map);
 		if (!map->color_f)
-			return (-1);
+		{
+			map->color_f = path_elem(map);
+			if (!map->color_f)
+				return (printf("Error allocation malloc\n"));
+			map->hex_f = rgb_to_hex(map->color_f);
+		}
+		else
+			return (printf("Error: texture F defined more than once\n"));
 	}
 	if (map->file[map->i] == 'C' && ft_isalpha(map->file[map->i + 1]) == 0)
 	{
-		map->color_c = path_elem(map);
 		if (!map->color_c)
-			return (-1);
+		{
+			map->color_c = path_elem(map);
+			if (!map->color_c)
+				return (printf("Error allocation malloc\n"));
+			map->hex_c = rgb_to_hex(map->color_c);
+		}
+		else
+			return (printf("Error: texture C defined more than once\n"));
 	}
 	return (0);
 }

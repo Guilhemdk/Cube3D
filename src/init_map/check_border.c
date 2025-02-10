@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_border.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:15:48 by pitroin           #+#    #+#             */
-/*   Updated: 2024/12/21 18:48:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/22 11:12:38 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_spawn(char *str, int i)
 {
-	if (str[i] == 'S' || str[i] == 'N' || str[i] == 'O'
+	if (str[i] == 'S' || str[i] == 'N' || str[i] == 'E'
 		|| str[i] == 'W')
 		return (0);
 	return (1);
@@ -63,8 +63,6 @@ int	check_border(t_map *map)
 
 	locate_spawn(map);
 	check = 0;
-	printf("map->x_spawn = %d et map->y_spawn %d\n",
-		map->x_spawn, map->y_spawn);
 	if (map->file_map[map->x_spawn + 1 + map->y_spawn * map->width] == '0')
 		check = flood_fill(map, map->x_spawn + 1, map->y_spawn);
 	else if (map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] == '0')
