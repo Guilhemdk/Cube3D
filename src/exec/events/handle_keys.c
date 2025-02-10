@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:42 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:20:39 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:38:00 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 int	escape_event(t_win *w, t_map *map)
 {
+	mlx_destroy_image(w->mlx, w->tex_no.img);
+	mlx_destroy_image(w->mlx, w->tex_so.img);
+	mlx_destroy_image(w->mlx, w->tex_we.img);
+	mlx_destroy_image(w->mlx, w->tex_ea.img);
 	if (w->img.image)
 		mlx_destroy_image(w->mlx, w->img.image);
 	mlx_clear_window(w->mlx, w->win);
 	mlx_destroy_window(w->mlx, w->win);
 	mlx_destroy_display(w->mlx);
 	free(w->mlx);
-	if (w->tex_no.img)
-		free(w->tex_no.img);
-	free(w->tex_so.img);
-	free(w->tex_ea.img);
-	free(w->tex_we.img);
 	free_map(map);
 	exit(EXIT_SUCCESS);
 	return (1);

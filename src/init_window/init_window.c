@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:11:56 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:23:20 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:28:12 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	init_window(t_data *d)
 {
 	d->w.mlx = mlx_init();
 	d->w.win = mlx_new_window(d->w.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "CUB3D");
+	init_text(&d->w);
 	if (load_textures(d, d->w.mlx) > 0)
 	{
 		printf("Error: textures not valid !\n");

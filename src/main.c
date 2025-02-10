@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/10 15:24:53 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:34:10 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	init_player(t_data *data)
 	data->rc.wall_hit_y = 0.0;
 	data->rc.wall_hit = 0.0;
 	data->rc.wall_flag = 0;
+	data->player.rotation = 0;
+	data->player.move_l_r = 0;
+	data->player.move_l_r = 0;
 }
 
 int	game_loop(t_data *d)
