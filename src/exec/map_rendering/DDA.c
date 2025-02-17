@@ -54,7 +54,7 @@ void	draw_wall(t_data *d, double wall_height, double top_pix, double bot_pix)
 		d->rc.wall_hit = d->rc.wall_hit_x
 			- floor(d->rc.wall_hit_x / TILE_SIZE) * TILE_SIZE;
 	tex_x = (int)(d->rc.wall_hit * (d->w.tex_ea.width / TILE_SIZE));
-	while (top_pix < bot_pix - 3)
+	while (top_pix < bot_pix)
 	{
 		if (d->rc.wall_flag == 0)
 			tex_y = (int)((top_pix - ((double)SCREEN_HEIGHT / 2 \

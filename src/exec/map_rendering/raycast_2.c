@@ -71,5 +71,9 @@ int	wall_hit(float x, float y, t_data *data)
 	if (data->m.map[map_y] && map_x <= (int)ft_strlen(data->m.map[map_y]))
 		if (data->m.map[map_y][map_x] == '1')
 			return (1);
+    if (map_y <= data->m.height)
+		if (data->m.map[map_y][map_x] == '1')
+			return (1);
+
 	return (0);
 }
