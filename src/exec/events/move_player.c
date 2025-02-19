@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:50 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:59:36 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/19 14:21:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	move_player(t_data *data, double move_x, double move_y)
 			(data->m.map[map_y][data->player.posx / TILE_SIZE] != '1' && \
 			data->m.map[data->player.posy / TILE_SIZE][map_x] != '1'))
 	{
+		if (data->m.map[(new_y - 1) / TILE_SIZE][(new_x - 1) / TILE_SIZE] == '1')
+			return ;
 		data->player.posx = new_x;
 		data->player.posy = new_y;
 	}
