@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:04:43 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/20 17:05:43 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/24 13:33:09 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,5 @@ int	wall_hit(float x, float y, t_data *data)
 	if (data->m.map[map_y] && map_x <= (int)ft_strlen(data->m.map[map_y]))
 		if (data->m.map[map_y][map_x] == '1')
 			return (1);
-    if (map_y <= data->m.height)
-		if (data->m.map[map_y][map_x] == '1')
-			return (1);
-
 	return (0);
 }

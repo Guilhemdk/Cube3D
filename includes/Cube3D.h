@@ -6,7 +6,7 @@
 /*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:35:22 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:04:39 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:30:46 by pitroin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	put_pixel(t_image *img, int x, int y, int color);
 //keys
 int		generate_event(int key, t_data *data);
 int		release_key(int key, t_data *data);
-int		escape_event(t_win *w, t_map *map);
+int		escape_event(t_data *data);
 
 //move_player
 void	hook(t_data *data, double move_x, double move_y);
