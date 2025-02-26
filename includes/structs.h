@@ -108,8 +108,8 @@ typedef struct s_wall
 
 typedef struct s_player
 {
-	int				posx;
-	int				posy;
+	float			posx;
+	float			posy;
 	float			fov;
 	double			angle;
 	double			rotation;

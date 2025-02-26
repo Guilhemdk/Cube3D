@@ -36,14 +36,14 @@ static void	move_player(t_data *data, double move_x, double move_y)
 	map_x = (new_x / TILE_SIZE);
 	map_y = (new_y / TILE_SIZE);
 	if (data->m.map[map_y][map_x] != '1' && \
-			(data->m.map[map_y][data->player.posx / TILE_SIZE] != '1' && \
-			data->m.map[data->player.posy / TILE_SIZE][map_x] != '1'))
+			(data->m.map[map_y][(int)data->player.posx / TILE_SIZE] != '1' && \
+			data->m.map[(int)data->player.posy / TILE_SIZE][map_x] != '1'))
 	{
 		if (data->m.map[(new_y - 1)
 				/ TILE_SIZE][(new_x - 1) / TILE_SIZE] == '1')
 			return ;
-		data->player.posx = new_x;
-		data->player.posy = new_y;
+		data->player.posx += move_x;
+		data->player.posy += move_y;
 	}
 }
 

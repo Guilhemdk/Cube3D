@@ -15,7 +15,7 @@
 
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 720
-# define FOV 60
+# define FOV 61
 # define PI 3.14159265358979323846
 # define TILE_SIZE 30
 
