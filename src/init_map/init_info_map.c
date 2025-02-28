@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/22 11:52:21 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/28 14:19:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ int	size_map(t_map *map, int i)
 			size++;
 			i++;
 		}
-		if (size > map->width)
+		if (size + 1 > map->width)
 			map->width = size + 1;
 		if (map->file[i] != '\0')
 			i++;
-		map->height++;
+		if (size != 0)
+			map->height++;
 	}
 	return (map->height * map->width);
 }
@@ -134,8 +135,8 @@ int	ft_search_elem(t_map *map)
 			return (1);
 		else if (id_color(map) != 0)
 			return (1);
-		else
-			map->i++;
+		// else 
+		map->i++;
 	}
 	return (1);
 }

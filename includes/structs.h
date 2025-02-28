@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:40:58 by pitroin           #+#    #+#             */
-/*   Updated: 2025/01/22 11:42:33 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/28 11:08:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_map
 	char			*file_ea;
 	char			*color_f;
 	char			*color_c;
+	int				flag_hex;
 	unsigned int	hex_f;
 	unsigned int	hex_c;
 	char			dir_spawn;

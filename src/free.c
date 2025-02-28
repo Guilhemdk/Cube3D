@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:00:40 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/24 15:33:36 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:21:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@ void	free_map(t_map *map)
 {
 	int	i;
 
-	if (!map)
-		printf("ZIZI\n");
-	printf("eheh\n");
-	// printf("map file %s\n", map->file);
 	if (map->file)
 	{
 		free(map->file);
 		map->file = NULL;
 	}
-	printf("debile\n");
 	if (map->file_so)
 	{
 		free(map->file_so);

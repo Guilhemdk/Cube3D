@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_border.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:15:48 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/24 15:01:41 by pitroin          ###   ########.fr       */
+/*   Updated: 2025/02/28 14:29:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int	is_spawn(char *str, int i)
 	if (str[i] == 'S' || str[i] == 'N' || str[i] == 'E'
 		|| str[i] == 'W')
 		return (0);
+	if (str[i] == ' ' || str[i] == '\n')
+		return (2);
+	if (str[i] == 'F' || str[i] == 'C')
+		return (3);
 	return (1);
 }
 
@@ -36,7 +40,7 @@ int	flood_fill(t_map *map, int x, int y)
 		+ flood_fill(map, x, y + 1) + flood_fill(map, x, y - 1));
 }
 
-void	locate_spawn(t_map *map)
+int	locate_spawn(t_map *map)
 {
 	int	i;
 
@@ -46,7 +50,7 @@ void	locate_spawn(t_map *map)
 	while (map->file_map[i] != '\0')
 	{
 		if (is_spawn(map->file_map, i) == 0)
-			return ;
+			return (0);
 		if (map->file_map[i] == '\n')
 		{
 			map->y_spawn++;
@@ -55,14 +59,17 @@ void	locate_spawn(t_map *map)
 		map->x_spawn++;
 		i++;
 	}
+	return (1);
 }
 
 int	check_border(t_map *map)
 {
 	int			check;
 
-	locate_spawn(map);
+	if (locate_spawn(map) == 1)
+		return (printf("Spawn not in map\n"));
 	check = 0;
+	// printf("%d\n%s\n", map->width , map->file_map);
 	if (map->file_map[map->x_spawn + 1 + map->y_spawn * map->width] == '0')
 		check = flood_fill(map, map->x_spawn + 1, map->y_spawn);
 	else if (map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] == '0')
@@ -73,7 +80,12 @@ int	check_border(t_map *map)
 	else if (map->file_map[map->x_spawn
 			+ (map->y_spawn - 1) * map->width] == '0')
 		check = flood_fill(map, map->x_spawn, map->y_spawn - 1);
+	else if (map->file_map[map->x_spawn + 1 + map->y_spawn * map->width] != '1'
+			|| map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] != '1'
+			|| map->file_map[map->x_spawn + (map->y_spawn + 1) * map->width] != '1'
+			||  map->file_map[map->x_spawn + (map->y_spawn - 1) * map->width] != '1')
+		return (printf("Error: Spawn not in map\n"));
 	if (check > 0)
-		return (printf("Error: Border not closed\n"));
+		return (printf("Error: map not closed\n"));
 	return (0);
 }
