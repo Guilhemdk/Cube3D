@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:15:48 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/28 14:29:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:16:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	check_border(t_map *map)
 	if (locate_spawn(map) == 1)
 		return (printf("Spawn not in map\n"));
 	check = 0;
-	// printf("%d\n%s\n", map->width , map->file_map);
 	if (map->file_map[map->x_spawn + 1 + map->y_spawn * map->width] == '0')
 		check = flood_fill(map, map->x_spawn + 1, map->y_spawn);
 	else if (map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] == '0')
@@ -81,9 +80,9 @@ int	check_border(t_map *map)
 			+ (map->y_spawn - 1) * map->width] == '0')
 		check = flood_fill(map, map->x_spawn, map->y_spawn - 1);
 	else if (map->file_map[map->x_spawn + 1 + map->y_spawn * map->width] != '1'
-			|| map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] != '1'
-			|| map->file_map[map->x_spawn + (map->y_spawn + 1) * map->width] != '1'
-			||  map->file_map[map->x_spawn + (map->y_spawn - 1) * map->width] != '1')
+		|| map->file_map[map->x_spawn - 1 + map->y_spawn * map->width] != '1'
+		|| map->file_map[map->x_spawn + (map->y_spawn + 1) * map->width] != '1'
+		|| map->file_map[map->x_spawn + (map->y_spawn - 1) * map->width] != '1')
 		return (printf("Error: Spawn not in map\n"));
 	if (check > 0)
 		return (printf("Error: map not closed\n"));

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:42 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/28 09:30:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:32:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	escape_event(t_data *data)
 	mlx_destroy_display(data->w.mlx);
 	free(data->w.mlx);
 	free_map(&data->m);
-	printf("test\n");
 	exit(EXIT_SUCCESS);
 	return (1);
 }

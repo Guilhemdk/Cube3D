@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:54:50 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/28 10:12:26 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:14:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	move_player(t_data *data, double move_x, double move_y)
 		data->player.posx += move_x;
 		data->player.posy += move_y;
 	}
-}	
+}
 
 void	hook(t_data *data, double move_x, double move_y)
 {

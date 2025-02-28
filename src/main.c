@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:03 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/28 13:54:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:14:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,6 @@ int	main(int ac, char **av)
 	if (init_map(&data.m, av[1]) > 0)
 		return (free_map(&data.m), 1);
 	data.m.map = ft_split(data.m.file_map, '\n');
-	int i = 0;
-	// exit(EXIT_SUCCESS);
-	while (data.m.map[i])
-	{
-		printf("ici \n>%s<\n", data.m.map[i]);
-		i++;
-	}
-	// exit(EXIT_FAILURE);
 	if (!data.m.map)
 		error(&data, "Error creating map\n");
 	init_player(&data);

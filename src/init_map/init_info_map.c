@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:12:16 by pitroin           #+#    #+#             */
-/*   Updated: 2025/02/28 14:19:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:16:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,6 @@ int	ft_search_elem(t_map *map)
 			return (1);
 		else if (id_color(map) != 0)
 			return (1);
-		// else 
 		map->i++;
 	}
 	return (1);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pitroin <pitroin@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:47:34 by pitroin           #+#    #+#              #
-#    Updated: 2025/02/10 16:59:13 by pitroin          ###   ########.fr        #
+#    Updated: 2025/02/28 20:18:51 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
        src/init_map/check_border.c \
        src/init_map/init_info_map.c \
        src/init_map/textures_map.c \
+	   src/init_map/check_elem.c \
        src/init_window/init_window.c \
        src/exec/map_rendering/DDA.c \
        src/exec/map_rendering/raycast.c \
